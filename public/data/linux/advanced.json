@@ -1,0 +1,52 @@
+{
+  "categoryId": "linux",
+  "difficulty": "advanced",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "linux_advanced_001",
+      "question": "GPUの使用状況（メモリ残量や温度）を確認するためのNVIDIA公式コマンドは？",
+      "choices": ["gpu-status", "nvidia-smi", "cuda-check", "top"],
+      "correctAnswer": 1,
+      "explanation": "「nvidia-smi」はAI開発者の相棒です。「学習が遅いな？」と思ったらこれを見て、GPUがちゃんと動いているか、メモリ不足になっていないかを確認します。",
+      "tags": ["gpu", "system-info"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_advanced_002",
+      "question": "SSH接続を切断しても、サーバー上でプログラム（学習処理）を動かし続けるために使うツールは？",
+      "choices": ["tmux / screen", "vim", "bash", "ssh -k"],
+      "correctAnswer": 0,
+      "explanation": "「tmux」や「screen」を使えば、ターミナルのセッションを保存できます。数日かかるAIの学習中、ずっとPCを開いておく必要がなくなり、誤って接続が切れても処理が止まりません。",
+      "tags": ["cli", "ssh", "process-management"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_advanced_003",
+      "question": "APIキーやパスワードをコードに直接書かず、OSに保存して読み込ませる仕組みは？",
+      "choices": ["環境変数 (Environment Variable)", "グローバル変数", "定数ファイル", "ルートディレクトリ"],
+      "correctAnswer": 0,
+      "explanation": "「export OPENAI_API_KEY=sk-...」のように設定し、プログラムからは `os.environ` で読み込みます。コードをGitHubにアップしてもパスワードが漏れないための基本セキュリティです。",
+      "tags": ["security", "environment"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_advanced_004",
+      "question": "SSHでサーバーに接続する際、パスワードよりも安全とされる認証方式は？",
+      "choices": ["公開鍵認証", "生体認証", "ワンタイムパスワード", "IPアドレス制限"],
+      "correctAnswer": 0,
+      "explanation": "「公開鍵（鍵穴）」をサーバーに置き、「秘密鍵（鍵）」を自分が持つ方式です。クラウド上のGPUサーバーなどは、セキュリティのためパスワードログインを禁止し、この方式のみ許可するのが一般的です。",
+      "tags": ["security", "ssh"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_advanced_005",
+      "question": "Pythonのライブラリ環境をプロジェクトごとに分離する仕組みは？",
+      "choices": ["Virtual Environment (venv)", "Docker", "Anaconda", "全て正解"],
+      "correctAnswer": 3,
+      "explanation": "venv, Docker, Anacondaはいずれも環境分離に使われます。プロジェクトAではPyTorch 1.0、Bでは2.0を使いたい場合など、これらを使って混ぜないようにするのが「環境構築」の第一歩です。",
+      "tags": ["environment", "python"],
+      "aiEraRelevance": true
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "categoryId": "cloud",
+  "difficulty": "advanced",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "cloud_advanced_001",
+      "question": "クラウドのインフラ構成（サーバー台数やネットワーク）をコードで記述して自動構築する手法は？",
+      "choices": ["IaC (Infrastructure as Code)", "CI/CD", "DevOps", "Agile"],
+      "correctAnswer": 0,
+      "explanation": "Terraformなどが有名です。画面ポチポチの手作業ではなくコードで管理することで、「先月と同じ学習環境をもう一度一瞬で作る」といったことが可能になります。",
+      "tags": ["iac", "automation", "terraform"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_advanced_002",
+      "question": "コンテナ化されたアプリ（Docker）のデプロイや管理を自動化する「オーケストレーション」ツールは？",
+      "choices": ["Kubernetes (K8s)", "Docker Compose", "Ansible", "Jenkins"],
+      "correctAnswer": 0,
+      "explanation": "大量のコンテナを管理する技術です。クラウドではEKSやGKEというマネージドサービスとして提供されています。大規模なAI推論APIなどを安定稼働させるのによく使われます。",
+      "tags": ["kubernetes", "container", "orchestration"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_advanced_003",
+      "question": "「責任共有モデル」において、ユーザー（利用者）が責任を持つ範囲は？",
+      "choices": ["OS、アプリ、データの設定と管理", "データセンターの物理セキュリティ", "ハードウェアの故障対応", "グローバルネットワークの敷設"],
+      "correctAnswer": 0,
+      "explanation": "クラウド事業者は「クラウド自体の安全性」を守りますが、「クラウドの中で動かすアプリの安全性（パスワード管理やOSの更新）」は利用者の責任です。ここを勘違いすると事故になります。",
+      "tags": ["security", "basics"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_advanced_004",
+      "question": "Dockerコンテナのイメージ（設計図）をクラウド上で保存・管理するサービスは？",
+      "choices": ["ECR / GCR (Container Registry)", "S3", "EBS", "RDS"],
+      "correctAnswer": 0,
+      "explanation": "自分のPCで作ったAIアプリのコンテナイメージをここにアップロードし、本番サーバーからプル（ダウンロード）して起動します。コンテナ開発のハブとなる場所です。",
+      "tags": ["container", "docker", "registry"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_advanced_005",
+      "question": "システムへのアクセス負荷に応じて、自動的にサーバー台数を増減させる機能は？",
+      "choices": ["Auto Scaling", "Load Balancing", "High Availability", "Failover"],
+      "correctAnswer": 0,
+      "explanation": "AIアプリがバズってアクセス急増した時はサーバーを増やし、夜間は減らしてコストを抑える、といった運用を自動化できます。クラウドならではのメリットです。",
+      "tags": ["compute", "cost-management"],
+      "aiEraRelevance": true
+    }
+  ]
+}

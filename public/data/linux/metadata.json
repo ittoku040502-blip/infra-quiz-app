@@ -1,0 +1,32 @@
+{
+  "categoryId": "linux",
+  "name": "Linux/OS操作",
+  "description": "AI開発に必須のLinuxコマンドと環境構築の知識",
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-18",
+  "difficulties": [
+    {
+      "level": "basic",
+      "name": "基礎",
+      "description": "基本的なコマンド操作",
+      "questionCount": 5,
+      "file": "basic.json"
+    },
+    {
+      "level": "intermediate",
+      "name": "応用",
+      "description": "実践的なコマンドと管理",
+      "questionCount": 5,
+      "file": "intermediate.json"
+    },
+    {
+      "level": "advanced",
+      "name": "発展",
+      "description": "環境構築とセキュリティ",
+      "questionCount": 5,
+      "file": "advanced.json"
+    }
+  ],
+  "tags": ["CLI", "bash", "SSH", "environment", "GPU"],
+  "aiEraRelevance": "high"
+}

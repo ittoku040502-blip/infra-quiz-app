@@ -1,0 +1,32 @@
+{
+  "categoryId": "cloud",
+  "name": "クラウド(AWS/GCP)",
+  "description": "AWSやGCPの基本概念から実践的な知識まで",
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-18",
+  "difficulties": [
+    {
+      "level": "basic",
+      "name": "基礎",
+      "description": "クラウドの基本的なサービス形態と用語",
+      "questionCount": 5,
+      "file": "basic.json"
+    },
+    {
+      "level": "intermediate",
+      "name": "応用",
+      "description": "主要サービスとコスト管理、セキュリティ",
+      "questionCount": 5,
+      "file": "intermediate.json"
+    },
+    {
+      "level": "advanced",
+      "name": "発展",
+      "description": "IaC、オーケストレーション、責任共有モデル",
+      "questionCount": 5,
+      "file": "advanced.json"
+    }
+  ],
+  "tags": ["AWS", "GCP", "IaaS", "SaaS", "serverless", "security"],
+  "aiEraRelevance": "high"
+}

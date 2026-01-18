@@ -1,0 +1,52 @@
+{
+  "categoryId": "container",
+  "difficulty": "intermediate",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "container_intermediate_001",
+      "question": "「Webサーバー」と「データベース」など、複数のコンテナをまとめて定義・一括起動するツールは？",
+      "choices": ["Docker Compose", "Kubernetes", "Docker Swarm", "Ansible"],
+      "correctAnswer": 0,
+      "explanation": "「Docker Compose」です。`docker-compose.yml` というファイルに複数のコンテナ構成を書き、`docker-compose up` と打つだけで、連携する複数のシステムが一斉に立ち上がります。AIアプリ（Streamlit）とDB（PostgreSQL）をセットで動かす時などに便利です。",
+      "tags": ["docker-compose", "multi-container"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "container_intermediate_002",
+      "question": "コンテナ内からNVIDIA製GPUを利用してAIの計算を高速化するために必要なオプションは？",
+      "choices": ["--gpus all", "--cpu high", "--memory max", "--accelerate"],
+      "correctAnswer": 0,
+      "explanation": "通常のDockerはCPUしか使いません。`--gpus all` オプション（要NVIDIA Container Toolkit）をつけることで、コンテナの壁を越えてPCのGPUパワーを直接使えるようになります。AI開発におけるDocker最大のメリットの一つです。",
+      "tags": ["docker", "gpu"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "container_intermediate_003",
+      "question": "現在起動しているコンテナの一覧を確認するコマンドは？",
+      "choices": ["docker ps", "docker ls", "docker images", "docker run"],
+      "correctAnswer": 0,
+      "explanation": "「docker ps」です。プロセス（Process Status）の略です。動いているコンテナのIDや、どのポートが開いているかを確認できます。停止しているものも含めて見るなら `docker ps -a` を使います。",
+      "tags": ["docker", "commands"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "container_intermediate_004",
+      "question": "起動中のコンテナの中に入って、コマンドを直接実行する（ログインするような）使い方は？",
+      "choices": ["docker exec -it [ID] bash", "docker enter [ID]", "docker ssh [ID]", "docker login [ID]"],
+      "correctAnswer": 0,
+      "explanation": "「docker exec」コマンドを使います。`-it` オプションをつけることで、対話的（Interactive）にコンテナ内部のターミナルを操作できます。「コンテナの中でPythonのバージョン確認をしたい」といった時に使います。",
+      "tags": ["docker", "commands"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "container_intermediate_005",
+      "question": "使わなくなったコンテナ、イメージ、ボリュームなどをまとめて削除し、ディスク容量を空けるコマンドは？",
+      "choices": ["docker prune", "docker delete all", "docker clean", "docker format"],
+      "correctAnswer": 0,
+      "explanation": "「docker system prune」です。AI開発をしていると、数GBある巨大なImageや作りかけのコンテナが溜まり、PCの容量を圧迫します。これを実行すると「使っていないゴミ」を一括掃除できます。",
+      "tags": ["docker", "commands", "storage"],
+      "aiEraRelevance": true
+    }
+  ]
+}

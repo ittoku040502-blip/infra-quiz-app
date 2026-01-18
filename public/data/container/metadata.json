@@ -1,0 +1,32 @@
+{
+  "categoryId": "container",
+  "name": "コンテナ(Docker/K8s)",
+  "description": "DockerやKubernetesによるアプリのパッケージ化と運用",
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-18",
+  "difficulties": [
+    {
+      "level": "basic",
+      "name": "基礎",
+      "description": "Dockerの基本概念と操作",
+      "questionCount": 5,
+      "file": "basic.json"
+    },
+    {
+      "level": "intermediate",
+      "name": "応用",
+      "description": "複数コンテナ連携とGPU活用",
+      "questionCount": 5,
+      "file": "intermediate.json"
+    },
+    {
+      "level": "advanced",
+      "name": "発展",
+      "description": "Dockerfile作成とKubernetesの基礎",
+      "questionCount": 5,
+      "file": "advanced.json"
+    }
+  ],
+  "tags": ["Docker", "Kubernetes", "Container", "CI/CD"],
+  "aiEraRelevance": "high"
+}

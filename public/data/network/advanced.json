@@ -1,0 +1,147 @@
+{
+  "categoryId": "network",
+  "difficulty": "advanced",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "network_advanced_001",
+      "question": "Kubernetesのサービスメッシュ（例：Istio）が提供する機能として正しくないものはどれか？",
+      "choices": [
+        "サービス間通信の暗号化（mTLS）",
+        "トラフィックの詳細な制御とルーティング",
+        "コンテナイメージのビルドとデプロイ",
+        "サービス間の通信の可観測性向上"
+      ],
+      "correctAnswer": 2,
+      "explanation": "サービスメッシュはマイクロサービス間の通信を管理する基盤です。通信の暗号化、トラフィック制御、可観測性向上などの機能を提供しますが、コンテナイメージのビルドやデプロイはCI/CDツールの役割です。",
+      "tags": ["cloud-network", "kubernetes", "container"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_002",
+      "question": "ゼロトラストネットワークの原則として最も適切なものはどれか？",
+      "choices": [
+        "社内ネットワークからのアクセスは信頼する",
+        "VPNを使用すれば全てのリソースにアクセスできる",
+        "全てのアクセスを検証し、最小権限の原則を適用する",
+        "ファイアウォールで境界を守れば内部は安全である"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ゼロトラストは「決して信頼せず、常に検証する」というセキュリティモデルです。社内・社外を問わず、全てのリクエストを検証し、アクセスが許可された場合でも必要最小限の権限のみを与えます。",
+      "tags": ["security"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_003",
+      "question": "QUIC（HTTP/3のトランスポート層）の特徴として正しくないものはどれか？",
+      "choices": [
+        "UDPをベースにしている",
+        "接続確立とTLSハンドシェイクを統合し遅延を削減",
+        "ヘッドオブラインブロッキングを完全に解消",
+        "TCPと同様に輻輳制御を行わない"
+      ],
+      "correctAnswer": 3,
+      "explanation": "QUICはUDPをベースに、信頼性（再送制御、輻輳制御）と高速化（接続確立の短縮など）を両立させたプロトコルです。「輻輳制御を行わない」は誤りです。",
+      "tags": ["tcp-ip", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_004",
+      "question": "マイクロサービスアーキテクチャにおいて、サービス間通信で同期通信（REST/gRPC）より非同期通信（メッセージキュー）が適している場面はどれか？",
+      "choices": [
+        "即座にレスポンスが必要なユーザー認証処理",
+        "時間のかかる処理を依頼し、完了を待たずに応答を返したい場合",
+        "強い整合性が必要なトランザクション処理",
+        "単純なCRUD操作"
+      ],
+      "correctAnswer": 1,
+      "explanation": "非同期通信は、時間のかかる処理（AIの推論、動画エンコードなど）で、リクエストを受け付けた後、即座に応答を返し、実際の処理はバックグラウンドで行うような場合に適しています。これによりシステムの応答性が向上します。",
+      "tags": ["cloud-network", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_005",
+      "question": "DNS over HTTPS（DoH）の主な利点と懸念点の組み合わせとして正しいものはどれか？",
+      "choices": [
+        "利点：DNS解決の高速化、懸念点：証明書の管理が複雑",
+        "利点：DNSクエリのプライバシー保護、懸念点：企業のネットワーク監視が困難になる",
+        "利点：DNSSECの代替、懸念点：ブラウザの互換性",
+        "利点：IPv6のサポート、懸念点：レイテンシの増加"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DoHはDNSクエリをHTTPSで暗号化するため、ISPなどに通信内容を覗き見されるのを防ぎプライバシーを保護します。一方で、企業にとってはセキュリティポリシーの適用や監視が困難になるという懸念があります。",
+      "tags": ["dns", "security"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_006",
+      "question": "APIゲートウェイパターンにおいて、Backend for Frontend（BFF）パターンを採用する主な理由はどれか？",
+      "choices": [
+        "バックエンドサービスの数を減らすため",
+        "クライアントの種類（Web、モバイル等）ごとに最適化されたAPIを提供するため",
+        "認証を一切行わないため",
+        "データベースへの直接アクセスを可能にするため"
+      ],
+      "correctAnswer": 1,
+      "explanation": "BFFは、Web、モバイルアプリなど、フロントエンドの種類ごとに最適化されたAPIを提供する設計パターンです。これにより、各クライアントが必要とするデータ形式や量に合わせて、効率的なAPIを提供できます。",
+      "tags": ["cloud-network", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_007",
+      "question": "分散システムにおけるCAP定理の説明として正しいものはどれか？",
+      "choices": [
+        "Consistency、Availability、Partition toleranceの3つを同時に完全に満たすことは可能",
+        "ネットワーク分断時には、一貫性と可用性のどちらかを犠牲にする必要がある",
+        "CAPは暗号化のアルゴリズム名である",
+        "単一サーバーのシステムにのみ適用される"
+      ],
+      "correctAnswer": 1,
+      "explanation": "CAP定理は、分散システムにおいて、一貫性(C)、可用性(A)、分断耐性(P)の3つのうち、同時に満たせるのは2つまでである、という法則です。ネットワーク分断(P)を前提とすると、CかAのどちらかを優先する設計判断が必要になります。",
+      "tags": ["cloud-network"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_008",
+      "question": "SSRF(Server-Side Request Forgery)攻撃の説明として正しいものはどれか？",
+      "choices": [
+        "クライアント側のJavaScriptを改ざんする攻撃",
+        "サーバーに内部リソースへのリクエストを実行させる攻撃",
+        "SSL証明書を偽造する攻撃",
+        "DNSサーバーを乗っ取る攻撃"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SSRFは、攻撃者がサーバーを騙して、そのサーバーから内部ネットワークなどの意図しない場所にリクエストを送信させる攻撃です。クラウド環境では、インスタンスメタデータが窃取されるなどの深刻な被害につながる可能性があります。",
+      "tags": ["security", "cloud-network"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_009",
+      "question": "gRPCがREST APIと比較して優れている点として正しいものはどれか？",
+      "choices": [
+        "ブラウザからの直接アクセスが容易",
+        "Protocol Buffersによる効率的なシリアライゼーションと双方向ストリーミングのサポート",
+        "人間が読みやすいJSONフォーマット",
+        "キャッシュが容易"
+      ],
+      "correctAnswer": 1,
+      "explanation": "gRPCは、HTTP/2をベースとし、Protocol Buffersという効率的なバイナリ形式でデータをやり取りします。これにより、REST API(JSON)よりも高速な通信が可能です。また、双方向ストリーミングにも対応しています。",
+      "tags": ["api", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_advanced_010",
+      "question": "マルチクラウド環境でのネットワーク設計において最も重要な考慮点はどれか？",
+      "choices": [
+        "全てのクラウドで同じIPアドレス範囲を使用する",
+        "各クラウドプロバイダー固有のサービスのみを使用する",
+        "クラウド間の安全な接続、一貫したセキュリティポリシー、レイテンシの最適化",
+        "インターネット経由でのみ接続する"
+      ],
+      "correctAnswer": 2,
+      "explanation": "マルチクラウド環境では、各クラウド間の安全な専用線/VPN接続の確立、一貫したセキュリティポリシーの適用、そしてユーザーからのアクセスやサービス間通信のレイテンシ最適化が、設計上の重要な課題となります。",
+      "tags": ["cloud-network"],
+      "aiEraRelevance": true
+    }
+  ]
+}

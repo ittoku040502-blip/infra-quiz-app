@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-17",
+  "categories": [
+    {
+      "id": "network",
+      "name": "ネットワーク基礎",
+      "description": "TCP/IP、DNS、HTTPなどネットワークの基礎知識",
+      "icon": "🌐",
+      "enabled": true,
+      "difficulties": ["basic", "intermediate", "advanced"],
+      "totalQuestions": 50,
+      "aiEraFocus": true
+    },
+    {
+      "id": "linux",
+      "name": "Linux/OS操作",
+      "description": "Linuxコマンド、シェルスクリプト、システム管理",
+      "icon": "🐧",
+      "enabled": true,
+      "difficulties": ["basic", "intermediate", "advanced"],
+      "totalQuestions": 15,
+      "aiEraFocus": true
+    },
+    {
+      "id": "cloud",
+      "name": "クラウド(AWS/GCP)",
+      "description": "クラウドサービスの基本概念と実践",
+      "icon": "☁️",
+      "enabled": true,
+      "difficulties": ["basic", "intermediate", "advanced"],
+      "totalQuestions": 15,
+      "aiEraFocus": true
+    },
+    {
+      "id": "container",
+      "name": "コンテナ(Docker/K8s)",
+      "description": "コンテナ技術とオーケストレーション",
+      "icon": "🐳",
+      "enabled": true,
+      "difficulties": ["basic", "intermediate", "advanced"],
+      "totalQuestions": 15,
+      "aiEraFocus": true
+    }
+  ]
+}

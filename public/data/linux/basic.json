@@ -1,0 +1,52 @@
+{
+  "categoryId": "linux",
+  "difficulty": "basic",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "linux_basic_001",
+      "question": "現在のディレクトリ（自分がいる場所）のパスを表示するコマンドは？",
+      "choices": ["ls", "pwd", "cd", "where"],
+      "correctAnswer": 1,
+      "explanation": "「pwd (print working directory)」は、迷子になった時に使う基本コマンドです。AI学習時、データセットのパス指定ミス（File Not Foundエラー）を防ぐために、まずpwdで現在地を確認するのが鉄則です。",
+      "tags": ["cli", "filesystem"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_basic_002",
+      "question": "ファイルやディレクトリを削除するコマンドは？（※ゴミ箱には入らない）",
+      "choices": ["rm", "del", "trash", "remove"],
+      "correctAnswer": 0,
+      "explanation": "「rm (remove)」コマンドで削除します。Windowsのゴミ箱と違い、一度実行すると二度と戻らないことが多いため、AIの学習済みモデルなど重要なファイルを消す際は細心の注意が必要です。",
+      "tags": ["cli", "filesystem"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_basic_003",
+      "question": "新しいディレクトリ（フォルダ）を作成するコマンドは？",
+      "choices": ["new", "md", "mkdir", "create"],
+      "correctAnswer": 2,
+      "explanation": "「mkdir (make directory)」を使います。「mkdir -p data/train/images」のように「-p」オプションをつけると、途中のフォルダもまとめて作れるので、AIのデータ整理で重宝します。",
+      "tags": ["cli", "filesystem"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_basic_004",
+      "question": "ディレクトリを移動するコマンドは？",
+      "choices": ["mv", "go", "cd", "ls"],
+      "correctAnswer": 2,
+      "explanation": "「cd (change directory)」で移動します。「cd ..」で一つ上へ、「cd ~」でホームへ移動します。CUI操作の基本中の基本です。",
+      "tags": ["cli", "filesystem"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_basic_005",
+      "question": "ファイルの中身を閲覧するコマンドは？",
+      "choices": ["cat", "dog", "read", "open"],
+      "correctAnswer": 0,
+      "explanation": "「cat」コマンドを使います。設定ファイルの中身や、エラーログの内容をサッと確認したい時に使います。長いファイルの場合は「less」を使うこともあります。",
+      "tags": ["cli", "filesystem"],
+      "aiEraRelevance": true
+    }
+  ]
+}

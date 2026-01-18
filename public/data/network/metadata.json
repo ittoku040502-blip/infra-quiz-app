@@ -1,0 +1,32 @@
+{
+  "categoryId": "network",
+  "name": "ネットワーク基礎",
+  "description": "AI時代に必須のネットワーク知識を体系的に学習",
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-17",
+  "difficulties": [
+    {
+      "level": "basic",
+      "name": "基礎",
+      "description": "ネットワークの基本概念",
+      "questionCount": 20,
+      "file": "basic.json"
+    },
+    {
+      "level": "intermediate",
+      "name": "応用",
+      "description": "実践的なネットワーク知識",
+      "questionCount": 20,
+      "file": "intermediate.json"
+    },
+    {
+      "level": "advanced",
+      "name": "発展",
+      "description": "セキュリティとクラウド",
+      "questionCount": 10,
+      "file": "advanced.json"
+    }
+  ],
+  "tags": ["TCP/IP", "DNS", "HTTP", "セキュリティ", "クラウド"],
+  "aiEraRelevance": "high"
+}

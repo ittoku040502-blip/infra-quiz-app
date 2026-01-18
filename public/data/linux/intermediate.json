@@ -1,0 +1,52 @@
+{
+  "categoryId": "linux",
+  "difficulty": "intermediate",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "linux_intermediate_001",
+      "question": "「Permission denied（許可がありません）」というエラーが出た時、管理者権限で実行するために先頭につけるコマンドは？",
+      "choices": ["admin", "root", "sudo", "please"],
+      "correctAnswer": 2,
+      "explanation": "「sudo」は一時的に管理者（root）としてコマンドを実行します。ライブラリのインストールやシステム設定の変更など、AI環境構築時によく使います。強力な権限なので慎重に扱います。",
+      "tags": ["cli", "permission"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_intermediate_002",
+      "question": "ファイルのパーミッション（実行権限など）を変更するコマンドは？",
+      "choices": ["chmod", "chown", "chgrp", "attrib"],
+      "correctAnswer": 0,
+      "explanation": "「chmod (change mode)」です。例えば、自分で書いたスクリプトを実行可能にするには「chmod +x script.py」とします。これを忘れて「実行できない！」と焦るミスは初心者あるあるです。",
+      "tags": ["cli", "permission", "filesystem"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_intermediate_003",
+      "question": "大量のログファイルから、「Error」という文字が含まれる行だけを抜き出すコマンドは？",
+      "choices": ["find", "search", "grep", "scan"],
+      "correctAnswer": 2,
+      "explanation": "「grep」は文字列検索の強力なツールです。「cat log.txt | grep Error」のように使い、AI学習時の大量のログからエラー原因を特定するのに必須のスキルです。",
+      "tags": ["cli", "text-processing"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_intermediate_004",
+      "question": "ディスクの空き容量を確認するコマンドは？",
+      "choices": ["df -h", "du -s", "space", "ls -l"],
+      "correctAnswer": 0,
+      "explanation": "「df -h」でディスク使用率を確認できます。AI学習データやモデルファイルは巨大になりがちで、ディスクが一杯になると学習が途中で止まってしまうため、定期的なチェックが必要です。",
+      "tags": ["cli", "system-info"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "linux_intermediate_005",
+      "question": "Pythonなどのプロセスがフリーズした際、強制終了させるために使うコマンドは？",
+      "choices": ["stop", "end", "kill", "break"],
+      "correctAnswer": 2,
+      "explanation": "「kill プロセスID」で終了させます。GPUメモリを食いつぶしたまま固まった学習プロセスを掃除する際によく使います。まずは「ps」や「nvidia-smi」でIDを調べます。",
+      "tags": ["cli", "process-management"],
+      "aiEraRelevance": true
+    }
+  ]
+}

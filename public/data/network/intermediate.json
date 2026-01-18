@@ -1,0 +1,287 @@
+{
+  "categoryId": "network",
+  "difficulty": "intermediate",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "network_intermediate_001",
+      "question": "REST APIにおいて、HTTPステータスコード「201 Created」が返されるのはどのような場合か？",
+      "choices": [
+        "リソースの取得に成功した場合",
+        "リソースの新規作成に成功した場合",
+        "リソースの更新に成功した場合",
+        "リソースの削除に成功した場合"
+      ],
+      "correctAnswer": 1,
+      "explanation": "201 Createdは、POSTリクエストなどで新しいリソースが正常に作成されたときに返されるステータスコードです。APIを設計・利用する際、適切なステータスコードを使い分けることが重要です。",
+      "tags": ["http", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_002",
+      "question": "192.168.1.0/26のネットワークで使用可能なホストアドレス数はいくつか？",
+      "choices": [
+        "62個",
+        "64個",
+        "126個",
+        "254個"
+      ],
+      "correctAnswer": 0,
+      "explanation": "/26はホスト部が6ビットであることを意味し、2^6 = 64個のアドレスが使えます。しかし、ネットワークアドレスとブロードキャストアドレスの2つは機器に割り当てられないため、実際に使えるのは62個です。",
+      "tags": ["ip-address", "subnet"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_003",
+      "question": "TCPの3ウェイハンドシェイクで交換されるフラグの正しい順序はどれか？",
+      "choices": [
+        "ACK → SYN → SYN+ACK",
+        "SYN → ACK → SYN+ACK",
+        "SYN → SYN+ACK → ACK",
+        "SYN+ACK → SYN → ACK"
+      ],
+      "correctAnswer": 2,
+      "explanation": "3ウェイハンドシェイクは、①クライアントがSYNを送り、②サーバーがSYN+ACKを返し、③クライアントがACKを送る、という3ステップで通信路を確立します。",
+      "tags": ["tcp-ip"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_004",
+      "question": "DNSキャッシュポイズニング攻撃の説明として正しいものはどれか？",
+      "choices": [
+        "DNSサーバーを過負荷にして応答不能にする攻撃",
+        "偽のDNS応答を注入して不正なIPアドレスに誘導する攻撃",
+        "DNSサーバーの認証情報を窃取する攻撃",
+        "DNSの通信を盗聴してドメイン情報を取得する攻撃"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DNSキャッシュポイズニングは、DNSサーバーのキャッシュに偽の情報を注入し、ユーザーをフィッシングサイトなどの不正なIPアドレスに誘導する攻撃です。",
+      "tags": ["security", "dns"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_005",
+      "question": "CORSエラーが発生する原因として正しいものはどれか？",
+      "choices": [
+        "サーバーのCPU使用率が高すぎる",
+        "異なるオリジンへのリクエストがサーバーで許可されていない",
+        "HTTPSではなくHTTPでアクセスしている",
+        "リクエストのタイムアウト時間が短すぎる"
+      ],
+      "correctAnswer": 1,
+      "explanation": "CORSエラーは、ブラウザのセキュリティ機能により、あるオリジンから異なるオリジンへのリソースリクエストが、サーバー側で明示的に許可されていない場合に発生します。AIのAPIを使ったWebアプリ開発で頻繁に遭遇します。",
+      "tags": ["security", "http", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_006",
+      "question": "VLANを使用する主な目的として最も適切なものはどれか？",
+      "choices": [
+        "物理的な配線を削減する",
+        "通信を暗号化する",
+        "論理的にネットワークを分割しブロードキャストドメインを制限する",
+        "IPアドレスの自動割り当てを行う"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VLANは、物理的には同じスイッチに接続されていても、論理的にネットワークを分割する技術です。これにより、セキュリティの向上や、不要なブロードキャスト通信の削減が実現できます。",
+      "tags": ["switching"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_007",
+      "question": "TLSハンドシェイクで行われないものはどれか？",
+      "choices": [
+        "使用する暗号スイートの合意",
+        "サーバー証明書の検証",
+        "セッション鍵の生成",
+        "ユーザーのパスワード認証"
+      ],
+      "correctAnswer": 3,
+      "explanation": "TLSハンドシェイクは暗号化通信路を確立するための準備作業です。ユーザーのパスワード認証は、この安全な通信路が確立された「後」に、アプリケーション層で行われます。",
+      "tags": ["security", "tcp-ip"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_008",
+      "question": "ロードバランサーのラウンドロビン方式の説明として正しいものはどれか？",
+      "choices": [
+        "サーバーの負荷状況に応じて動的に振り分ける",
+        "リクエストを順番に各サーバーに振り分ける",
+        "クライアントのIPアドレスに基づいて振り分ける",
+        "レスポンス時間が最短のサーバーに振り分ける"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ラウンドロビンは、複数のサーバーにリクエストを順番に均等に振り分ける、最もシンプルな負荷分散方式です。AIサービスの裏側でも、大量のリクエストをさばくために使われています。",
+      "tags": ["cloud-network"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_009",
+      "question": "WebSocketがHTTPと比較して優れている点はどれか？",
+      "choices": [
+        "通信の暗号化が標準でサポートされている",
+        "双方向のリアルタイム通信が可能である",
+        "キャッシュが効きやすい",
+        "ファイアウォールを通過しやすい"
+      ],
+      "correctAnswer": 1,
+      "explanation": "WebSocketは、一度接続を確立するとサーバーとクライアント間で双方向のリアルタイム通信が可能になる点です。ChatGPTのようなAIチャットでリアルタイムに文字が表示されるのもこの技術のおかげです。",
+      "tags": ["http", "tcp-ip"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_010",
+      "question": "CDN（Content Delivery Network）の主なメリットとして適切でないものはどれか？",
+      "choices": [
+        "ユーザーに近いサーバーからコンテンツを配信できる",
+        "オリジンサーバーの負荷を軽減できる",
+        "DDoS攻撃への耐性を向上できる",
+        "データベースのクエリを最適化できる"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CDNは画像や動画などの静的コンテンツをキャッシュし、ユーザーに近いサーバーから配信することで高速化と負荷軽減を図るものです。動的なデータベースクエリの最適化は行いません。",
+      "tags": ["cloud-network", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_011",
+      "question": "OAuth 2.0のアクセストークンの説明として正しいものはどれか？",
+      "choices": [
+        "ユーザーの認証情報（ID/パスワード）を含む",
+        "クライアントがリソースにアクセスするための認可情報を含む",
+        "永続的に有効で更新の必要がない",
+        "必ずJWT形式である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "アクセストークンは、ユーザーの代わりにアプリが特定のリソースにアクセスすることを許可する「許可証」です。パスワードそのものを渡すのではなく、権限を委譲するために使われます。",
+      "tags": ["security", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_012",
+      "question": "BGPプロトコルの主な用途として正しいものはどれか？",
+      "choices": [
+        "同一LAN内でのMACアドレス解決",
+        "インターネット上の自律システム間での経路交換",
+        "DHCP による IP アドレスの割り当て",
+        "DNS によるドメイン名解決"
+      ],
+      "correctAnswer": 1,
+      "explanation": "BGPは、インターネットを構成する巨大なネットワーク（AS）間で、宛先までの経路情報を交換するためのプロトコルです。インターネットの根幹を支えています。",
+      "tags": ["routing"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_013",
+      "question": "レート制限（Rate Limiting）をAPIに実装する主な目的はどれか？",
+      "choices": [
+        "通信を暗号化するため",
+        "サービスの安定性を保ち不正利用を防ぐため",
+        "レスポンスを圧縮するため",
+        "認証を強化するため"
+      ],
+      "correctAnswer": 1,
+      "explanation": "レート制限は、APIへのアクセス回数を制限することで、一部のユーザーによる使いすぎや、悪意のある大量アクセス（DoS攻撃）からサービスを守るために実装されます。",
+      "tags": ["security", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_014",
+      "question": "JSONWebToken（JWT）の構造として正しいものはどれか？",
+      "choices": [
+        "暗号文のみ",
+        "ヘッダー、ペイロード、署名の3部分",
+        "公開鍵と秘密鍵のペア",
+        "ユーザーIDとパスワードのハッシュ"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JWTは、ヘッダー・ペイロード・署名の3つの部分をドットで連結した構造です。ペイロードは誰でも見れるため、秘密情報を含めてはいけません。署名により改ざんを検知します。",
+      "tags": ["security", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_015",
+      "question": "リバースプロキシの役割として正しくないものはどれか？",
+      "choices": [
+        "クライアントの匿名性を確保する",
+        "バックエンドサーバーへの負荷分散",
+        "SSL終端処理",
+        "静的コンテンツのキャッシング"
+      ],
+      "correctAnswer": 0,
+      "explanation": "リバースプロキシはサーバー側の代理人です。負荷分散やSSL終端などの役割を担います。「クライアントの匿名性確保」は、クライアント側に置かれるフォワードプロキシの役割です。",
+      "tags": ["cloud-network", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_016",
+      "question": "IPsecのトンネルモードとトランスポートモードの違いとして正しいものはどれか？",
+      "choices": [
+        "トンネルモードはTCP、トランスポートモードはUDPを使用する",
+        "トンネルモードは元のIPヘッダーも暗号化するが、トランスポートモードはペイロードのみ暗号化する",
+        "トンネルモードは認証のみ、トランスポートモードは暗号化のみを行う",
+        "トンネルモードはIPv4専用、トランスポートモードはIPv6専用である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IPsecのトンネルモードはパケット全体を暗号化して新しいヘッダーを付け、VPNゲートウェイ間通信などで使われます。トランスポートモードはデータ部分のみを暗号化します。",
+      "tags": ["security", "vpn"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_017",
+      "question": "HTTP/2の特徴として正しくないものはどれか？",
+      "choices": [
+        "ヘッダー圧縮によるオーバーヘッド削減",
+        "単一のTCP接続で複数のリクエストを並行処理",
+        "サーバープッシュ機能のサポート",
+        "テキストベースのプロトコル"
+      ],
+      "correctAnswer": 3,
+      "explanation": "HTTP/2は、効率重視の「バイナリプロトコル」です。テキストベースではありません。その他、ヘッダー圧縮、1つの接続での多重化、サーバープッシュなどが特徴です。",
+      "tags": ["http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_018",
+      "question": "AWSのVPCにおいて、インターネットへの通信を可能にするために必要なものはどれか？",
+      "choices": [
+        "NATゲートウェイのみ",
+        "インターネットゲートウェイのみ",
+        "インターネットゲートウェイとパブリックサブネットのルート設定",
+        "VPNゲートウェイのみ"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VPCからインターネットにアクセスするには、インターネットゲートウェイ（IGW）をVPCにアタッチし、パブリックサブネットのルートテーブルでIGWへの経路を設定する必要があります。",
+      "tags": ["cloud-network", "aws"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_019",
+      "question": "ARPプロトコルの役割として正しいものはどれか？",
+      "choices": [
+        "ドメイン名をIPアドレスに変換する",
+        "IPアドレスをMACアドレスに変換する",
+        "IPアドレスを自動的に割り当てる",
+        "パケットの経路を決定する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ARPは、同一ネットワーク内で通信する際に、宛先のIPアドレスに対応するMACアドレスを問い合わせるためのプロトコルです。「IP→MAC」の変換を担います。",
+      "tags": ["network-basics"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_intermediate_020",
+      "question": "GraphQL APIとREST APIの違いとして正しいものはどれか？",
+      "choices": [
+        "GraphQLはHTTPを使用しないが、RESTはHTTPを使用する",
+        "GraphQLはクライアントが必要なデータを指定でき、オーバーフェッチを防げる",
+        "RESTの方がGraphQLより常にパフォーマンスが良い",
+        "GraphQLはキャッシュが容易だがRESTは困難である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "GraphQLの最大の特徴は、クライアントがリクエストで欲しいデータだけを指定できる点です。これにより、RESTで起こりがちな不要なデータまで取得してしまう問題（オーバーフェッチ）を防げます。",
+      "tags": ["api", "http"],
+      "aiEraRelevance": true
+    }
+  ]
+}

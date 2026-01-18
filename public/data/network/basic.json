@@ -1,0 +1,287 @@
+{
+  "categoryId": "network",
+  "difficulty": "basic",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "network_basic_001",
+      "question": "HTTPステータスコード「404」が返される状況として正しいものはどれか？",
+      "choices": [
+        "サーバーが過負荷で応答できない",
+        "リクエストしたリソースがサーバー上に存在しない",
+        "認証が必要なページに未認証でアクセスした",
+        "リクエストの構文が間違っている"
+      ],
+      "correctAnswer": 1,
+      "explanation": "404 Not Foundは、クライアントが正しくサーバーと通信できているものの、要求したページやファイルがサーバー上に見つからない場合に返されるエラーコードです。AIサービスも、存在しないAPIエンドポイントにアクセスすると404を返します。",
+      "tags": ["http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_002",
+      "question": "TCP/IPモデルにおいて、HTTPプロトコルはどの層で動作するか？",
+      "choices": [
+        "ネットワークインターフェース層",
+        "インターネット層",
+        "トランスポート層",
+        "アプリケーション層"
+      ],
+      "correctAnswer": 3,
+      "explanation": "HTTPは「アプリケーション層」で動作するプロトコルです。AIサービスとの通信もHTTPを使って行われています。",
+      "tags": ["tcp-ip", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_003",
+      "question": "IPアドレス「192.168.1.0/24」において、「/24」が意味するものは何か？",
+      "choices": [
+        "ネットワーク内のホスト数が24台",
+        "サブネットマスクの先頭24ビットが1",
+        "24番目のネットワークセグメント",
+        "通信可能なポート数が24個"
+      ],
+      "correctAnswer": 1,
+      "explanation": "「/24」はCIDR表記で、IPアドレスの先頭24ビットがネットワーク部であることを示します。クラウドサービスでネットワーク範囲を指定する際に必須の知識です。",
+      "tags": ["ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_004",
+      "question": "DNSの役割として最も適切なものはどれか？",
+      "choices": [
+        "IPアドレスを物理的なMACアドレスに変換する",
+        "ドメイン名をIPアドレスに変換する",
+        "データを暗号化して安全に通信する",
+        "ネットワークの経路を決定する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DNSは、人間が覚えやすいドメイン名を、コンピュータが通信に使うIPアドレスに変換する役割を果たします。AIサービスへのアクセスも、すべてこのDNSの仕組みに支えられています。",
+      "tags": ["dns"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_005",
+      "question": "TCPとUDPの違いとして正しいものはどれか？",
+      "choices": [
+        "TCPはコネクションレス型、UDPはコネクション型",
+        "TCPは再送制御がない、UDPは再送制御がある",
+        "TCPは信頼性を重視、UDPは速度を重視",
+        "TCPはアプリケーション層、UDPはトランスポート層"
+      ],
+      "correctAnswer": 2,
+      "explanation": "TCPは信頼性を重視し、データが確実に届いたか確認します（Web閲覧など）。UDPは速度を重視し、確認を省略します（動画配信など）。",
+      "tags": ["tcp-ip"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_006",
+      "question": "プライベートIPアドレスとして使用できないものはどれか？",
+      "choices": [
+        "10.0.0.1",
+        "172.16.0.1",
+        "192.168.0.1",
+        "200.0.0.1"
+      ],
+      "correctAnswer": 3,
+      "explanation": "プライベートIPアドレスは、内部ネットワークでのみ使えるアドレスで、10.x.x.x、172.16〜31.x.x、192.168.x.x の3つの範囲が予約されています。200.0.0.1はグローバルIPアドレスです。",
+      "tags": ["ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_007",
+      "question": "HTTPSがHTTPより安全である主な理由はどれか？",
+      "choices": [
+        "通信速度が速いから",
+        "SSL/TLSによる暗号化通信を行うから",
+        "サーバーの処理能力が高いから",
+        "ポート番号が大きいから"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HTTPSは、SSL/TLSという暗号化技術を使い、通信内容が第三者に盗み見られたり改ざんされたりすることを防ぎます。AIサービスに機密情報を送る際も、この技術で安全性が保たれています。",
+      "tags": ["security", "http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_008",
+      "question": "ルーターの主な役割として正しいものはどれか？",
+      "choices": [
+        "同一ネットワーク内のデバイス間でフレームを転送する",
+        "異なるネットワーク間でパケットを転送する",
+        "IPアドレスをMACアドレスに変換する",
+        "ドメイン名をIPアドレスに変換する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ルーターは、異なるネットワーク同士を接続し、パケットの宛先IPアドレスを見て最適な経路を選んで転送する役割を持ちます。",
+      "tags": ["routing"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_009",
+      "question": "OSI参照モデルの第3層（ネットワーク層）で使用されるアドレスはどれか？",
+      "choices": [
+        "MACアドレス",
+        "IPアドレス",
+        "ポート番号",
+        "URL"
+      ],
+      "correctAnswer": 1,
+      "explanation": "OSI参照モデルの第3層（ネットワーク層）では、IPアドレスを使って、データの送り元から最終目的地までの経路を決定します。",
+      "tags": ["osi-model", "ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_010",
+      "question": "ポート番号80と443が一般的に使用されるプロトコルの組み合わせはどれか？",
+      "choices": [
+        "FTP と SFTP",
+        "HTTP と HTTPS",
+        "SMTP と POP3",
+        "SSH と Telnet"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ポート番号は、同じIPアドレスでもどのサービスに届けるかを区別する番号です。80番はHTTP、443番はHTTPSの標準ポートとして世界共通で決められています。",
+      "tags": ["http", "tcp-ip"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_011",
+      "question": "NATの主な目的として正しいものはどれか？",
+      "choices": [
+        "通信を暗号化する",
+        "プライベートIPアドレスをグローバルIPアドレスに変換する",
+        "ドメイン名を解決する",
+        "ネットワークの帯域を制御する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "NATは、プライベートIPアドレスとグローバルIPアドレスを相互に変換する仕組みです。これにより、限られたグローバルIPアドレスを節約しながら、多くのデバイスがインターネットを利用できています。",
+      "tags": ["routing", "ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_012",
+      "question": "MACアドレスの特徴として正しいものはどれか？",
+      "choices": [
+        "ネットワーク管理者が自由に設定できる",
+        "48ビットで構成され、製造時にNICに割り当てられる",
+        "インターネット上で一意である必要がある",
+        "通信相手のネットワークを識別する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MACアドレスは、ネットワーク機器に製造時から割り当てられている48ビットの固有番号で、同じネットワーク内での通信に使われます。",
+      "tags": ["network-basics"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_013",
+      "question": "APIリクエストでよく使われるHTTPメソッドのうち、データの取得に使用するものはどれか？",
+      "choices": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HTTPメソッドでGETは「データをください」という取得の命令です。AIのAPIを呼び出すとき、過去の会話履歴の取得はGETを使うなど、この使い分けを理解することが開発の基本になります。",
+      "tags": ["http", "api"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_014",
+      "question": "ファイアウォールの基本的な役割として正しいものはどれか？",
+      "choices": [
+        "ウイルスを検知して駆除する",
+        "通信を暗号化する",
+        "許可された通信のみを通過させる",
+        "IPアドレスを自動的に割り当てる"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ファイアウォールは、ネットワークの「門番」として、あらかじめ設定されたルールに基づいて、許可された通信だけを通し、不正なアクセスをブロックします。",
+      "tags": ["security"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_015",
+      "question": "DHCPの役割として正しいものはどれか？",
+      "choices": [
+        "ドメイン名をIPアドレスに変換する",
+        "IPアドレスを自動的に割り当てる",
+        "メールを配送する",
+        "Webページを配信する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DHCPは、ネットワークに接続した機器にIPアドレス、サブネットマスク、DNSサーバーのアドレスなどを自動的に割り当てる仕組みです。",
+      "tags": ["network-basics", "ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_016",
+      "question": "サブネットマスク「255.255.255.0」をCIDR表記で表すとどうなるか？",
+      "choices": [
+        "/8",
+        "/16",
+        "/24",
+        "/32"
+      ],
+      "correctAnswer": 2,
+      "explanation": "サブネットマスク 255.255.255.0 を2進数で表すと、1が24個並びます。CIDR表記では、この1の数を使って「/24」と簡潔に表現します。",
+      "tags": ["ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_017",
+      "question": "L2スイッチが転送の判断に使用する情報はどれか？",
+      "choices": [
+        "IPアドレス",
+        "MACアドレス",
+        "ポート番号",
+        "URL"
+      ],
+      "correctAnswer": 1,
+      "explanation": "L2スイッチは、OSIモデルの第2層（データリンク層）で動作し、MACアドレスを見て同一ネットワーク内のデータ転送を行います。",
+      "tags": ["switching"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_018",
+      "question": "HTTPリクエストに含まれないものはどれか？",
+      "choices": [
+        "メソッド（GET、POSTなど）",
+        "リクエストURI",
+        "HTTPバージョン",
+        "サーバーの処理時間"
+      ],
+      "correctAnswer": 3,
+      "explanation": "「サーバーの処理時間」はサーバー側で計測される値であり、クライアントからサーバーへのHTTPリクエストには含まれません。",
+      "tags": ["http"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_019",
+      "question": "IPv4アドレスのビット数として正しいものはどれか？",
+      "choices": [
+        "16ビット",
+        "32ビット",
+        "64ビット",
+        "128ビット"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IPv4アドレスは32ビットで構成され、約43億個のアドレスを表現できます。現在は、128ビットを持つIPv6への移行が進んでいます。",
+      "tags": ["ip-address"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "network_basic_020",
+      "question": "Webブラウザがサーバーからページを取得する際の正しい順序はどれか？",
+      "choices": [
+        "TCP接続 → DNS解決 → HTTPリクエスト → レスポンス受信",
+        "DNS解決 → TCP接続 → HTTPリクエスト → レスポンス受信",
+        "HTTPリクエスト → DNS解決 → TCP接続 → レスポンス受信",
+        "DNS解決 → HTTPリクエスト → TCP接続 → レスポンス受信"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Webページを表示する流れは、①DNS解決（ドメイン名→IPアドレス）、②TCP接続（通信路確立）、③HTTPリクエスト送信、④HTTPレスポンス受信の順です。この流れの理解は、トラブルシューティングの基本です。",
+      "tags": ["http", "dns", "tcp-ip"],
+      "aiEraRelevance": true
+    }
+  ]
+}

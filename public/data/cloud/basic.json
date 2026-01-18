@@ -1,0 +1,52 @@
+{
+  "categoryId": "cloud",
+  "difficulty": "basic",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "cloud_basic_001",
+      "question": "AWSやGCPで、必要な時だけサーバー（計算能力）を借りるサービス形態を何と呼ぶ？",
+      "choices": ["IaaS (Infrastructure as a Service)", "SaaS", "PaaS", "On-Premise"],
+      "correctAnswer": 0,
+      "explanation": "EC2などのIaaSは、物理的なパソコンを買わずに「計算能力」だけを借ります。AI開発では、高価なGPUマシンを買う代わりに、学習する数時間だけIaaSで強力なマシンを借りるのが賢い方法です。",
+      "tags": ["iaas", "aws", "gcp"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_basic_002",
+      "question": "クラウド利用料の高額請求（クラウド破産）を防ぐために、最初に設定すべきものは？",
+      "choices": ["予算アラート (Budget Alarm)", "多要素認証", "自動バックアップ", "SSHキー"],
+      "correctAnswer": 0,
+      "explanation": "「予算を超えたらメールする」設定です。GPUインスタンスを消し忘れると、個人でも数十万円の請求が来ることがあります。AI開発を始める前に必ず設定しましょう。",
+      "tags": ["cost-management"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_basic_003",
+      "question": "データセンターが置かれている物理的な「地域」のことを何と呼ぶ？",
+      "choices": ["リージョン (Region)", "ゾーン", "エッジ", "エリア"],
+      "correctAnswer": 0,
+      "explanation": "「東京リージョン」「バージニア北部リージョン」などがあります。遠いリージョンは通信が遅くなりますが、最新のAI用GPUが先に米国リージョンで使えるようになることもあるため、使い分けが重要です。",
+      "tags": ["basics"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_basic_004",
+      "question": "大量の画像データやAIモデルファイルを保存するのに適した、容量無制限のストレージサービスは？",
+      "choices": ["オブジェクトストレージ (S3, GCS)", "ブロックストレージ", "データベース", "キャッシュメモリ"],
+      "correctAnswer": 0,
+      "explanation": "AWS S3などが代表です。フォルダ構造ではなく「キー」でデータを管理します。安価で容量を気にせず使えるため、AIの学習データセット置き場として標準的に使われます。",
+      "tags": ["storage", "aws-s3", "gcs"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_basic_005",
+      "question": "サーバーを持たずにコードを実行できる「サーバーレス」サービスの例は？",
+      "choices": ["AWS Lambda", "Amazon EC2", "Google Compute Engine", "Docker"],
+      "correctAnswer": 0,
+      "explanation": "サーバーの管理（OS更新など）をクラウド側に任せ、プログラムの実行だけを行うサービスです。AIを使ったチャットボットのバックエンドなど、常時起動する必要がない処理に適しています。",
+      "tags": ["serverless", "aws-lambda"],
+      "aiEraRelevance": true
+    }
+  ]
+}

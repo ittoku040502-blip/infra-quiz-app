@@ -1,0 +1,52 @@
+{
+  "categoryId": "cloud",
+  "difficulty": "intermediate",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "cloud_intermediate_001",
+      "question": "外部からのアクセスを制御する「仮想ファイアウォール」の設定を何と呼ぶ？",
+      "choices": ["セキュリティグループ", "ルートテーブル", "ゲートウェイ", "サブネット"],
+      "correctAnswer": 0,
+      "explanation": "「ポート80（Web）は誰でもOK」「ポート22（SSH）は自分の家のIPからだけOK」といったルールを決めます。これの設定ミスで「アプリに繋がらない」または「ハッキングされた」というトラブルが起きます。",
+      "tags": ["security", "networking"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_intermediate_002",
+      "question": "クラウドの余剰リソースを使い、中断される可能性がある代わりに格安で借りられるインスタンスは？",
+      "choices": ["スポットインスタンス (Spot Instance)", "オンデマンドインスタンス", "リザーブドインスタンス", "専用ホスト"],
+      "correctAnswer": 0,
+      "explanation": "定価の最大90%OFFで借りられます。途中で強制終了されるリスクがありますが、途中で保存（チェックポイント）できるAIの学習処理なら、劇的にコストを下げられます。",
+      "tags": ["cost-management", "compute"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_intermediate_003",
+      "question": "サーバーを再起動すると変わってしまうIPアドレスに対して、固定のIPアドレスを割り当てる機能は？",
+      "choices": ["Elastic IP (EIP) / Static IP", "Public IP", "Private IP", "Dynamic IP"],
+      "correctAnswer": 0,
+      "explanation": "通常、クラウドのサーバーは再起動でIPが変わります。Webアプリとして公開したり、ドメインを紐付ける場合は、この固定IPオプションを使います（ただし確保しているだけで使わないと課金されるので注意）。",
+      "tags": ["networking", "compute"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_intermediate_004",
+      "question": "ユーザーやプログラムの「権限」を管理する機能は？",
+      "choices": ["IAM (Identity and Access Management)", "VPN", "SSO", "Directory Service"],
+      "correctAnswer": 0,
+      "explanation": "「このAIプログラムはS3への書き込みだけ許可する」といった細かい権限管理を行います。何でもできる強い権限のキーを使い回すと、漏洩した時にクラウド環境を乗っ取られるリスクがあります。",
+      "tags": ["security", "iam"],
+      "aiEraRelevance": true
+    },
+    {
+      "id": "cloud_intermediate_005",
+      "question": "Webサイトの表示を高速化するため、世界中の拠点にコンテンツをキャッシュする仕組みは？",
+      "choices": ["CDN (Content Delivery Network)", "DNS", "VPN", "Load Balancer"],
+      "correctAnswer": 0,
+      "explanation": "CloudFrontなどが該当します。画像やCSSなどをユーザーの近くのサーバーから配信します。自作したAIアプリを世界中に公開する際、表示速度を上げるために使います。",
+      "tags": ["networking", "cdn"],
+      "aiEraRelevance": true
+    }
+  ]
+}

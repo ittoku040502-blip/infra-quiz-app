@@ -1,0 +1,284 @@
+{
+  "questions": [
+    {
+      "id": "network_intermediate_001",
+      "question": "REST APIにおいて、HTTPステータスコード「201 Created」が返されるのはどのような場合か？",
+      "choices": [
+        "リソースの取得に成功した場合",
+        "リソースの新規作成に成功した場合",
+        "リソースの更新に成功した場合",
+        "リソースの削除に成功した場合"
+      ],
+      "correctAnswer": 1,
+      "explanation": "201 Createdは、POSTリクエストなどで新しいデータ（リソース）が正常に作成されたときに返されるステータスコードです。例えば、AIチャットアプリで新しい会話を作成したときや、SNSで投稿を作成したときにサーバーから返されます。200 OKは一般的な成功、204 No Contentは成功したがレスポンスに中身がない場合（削除成功時など）に使います。APIを設計・利用する際、適切なステータスコードを使い分けることが重要です。",
+      "difficulty": "intermediate",
+      "category": "http"
+    },
+    {
+      "id": "network_intermediate_002",
+      "question": "192.168.1.0/26のネットワークで使用可能なホストアドレス数はいくつか？",
+      "choices": [
+        "62個",
+        "64個",
+        "126個",
+        "254個"
+      ],
+      "correctAnswer": 0,
+      "explanation": "/26は「ホスト部（個別の機器を識別する部分）が6ビット」という意味です。2の6乗で64個のアドレスが使えますが、そのうちネットワークアドレス（先頭）とブロードキャストアドレス（末尾）の2つは機器に割り当てられないため、実際に使えるのは62個です。クラウドでネットワークを設計する際、「何台のサーバーを置けるか」を計算するために、このサブネット計算が必要になります。",
+      "difficulty": "intermediate",
+      "category": "ip-address"
+    },
+    {
+      "id": "network_intermediate_003",
+      "question": "TCPの3ウェイハンドシェイクで交換されるフラグの正しい順序はどれか？",
+      "choices": [
+        "ACK → SYN → SYN+ACK",
+        "SYN → ACK → SYN+ACK",
+        "SYN → SYN+ACK → ACK",
+        "SYN+ACK → SYN → ACK"
+      ],
+      "correctAnswer": 2,
+      "explanation": "3ウェイハンドシェイクは、TCP通信を始める前の「握手」のような確認作業です。①クライアントが「通信したい」とSYN（同期）を送り、②サーバーが「OK、こちらも準備できた」とSYN+ACK（同期+確認）を返し、③クライアントが「了解」とACK（確認）を送ります。この3ステップで双方が通信可能な状態を確認してから、実際のデータ送信が始まります。AIサービスとの通信も、この仕組みで接続が確立されています。",
+      "difficulty": "intermediate",
+      "category": "tcp-ip"
+    },
+    {
+      "id": "network_intermediate_004",
+      "question": "DNSキャッシュポイズニング攻撃の説明として正しいものはどれか？",
+      "choices": [
+        "DNSサーバーを過負荷にして応答不能にする攻撃",
+        "偽のDNS応答を注入して不正なIPアドレスに誘導する攻撃",
+        "DNSサーバーの認証情報を窃取する攻撃",
+        "DNSの通信を盗聴してドメイン情報を取得する攻撃"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DNSキャッシュポイズニングは、DNSサーバーの「住所録」に偽の情報を注入する攻撃です。例えば「bank.comのIPアドレスは○○」という偽情報を埋め込まれると、ユーザーは正規のURLを入力しても偽サイト（フィッシングサイト）に誘導されてしまいます。対策として、DNSSEC（DNS応答にデジタル署名を付ける仕組み）や、応答の検証強化が行われています。AIサービスを安全に利用するためにも、こうした攻撃手法を知っておくことが大切です。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_005",
+      "question": "CORSエラーが発生する原因として正しいものはどれか？",
+      "choices": [
+        "サーバーのCPU使用率が高すぎる",
+        "異なるオリジンへのリクエストがサーバーで許可されていない",
+        "HTTPSではなくHTTPでアクセスしている",
+        "リクエストのタイムアウト時間が短すぎる"
+      ],
+      "correctAnswer": 1,
+      "explanation": "CORS（Cross-Origin Resource Sharing）は、ブラウザのセキュリティ機能で「別のサイトからのアクセスを制限する」仕組みです。オリジンとは「プロトコル+ドメイン+ポート」の組み合わせで、例えばhttps://myapp.comからhttps://api.example.comにアクセスすると「別オリジン」になります。サーバー側でAccess-Control-Allow-Originヘッダーを設定しないと、ブラウザがアクセスをブロックします。AIのAPIを使ったWebアプリを作る際、このCORS設定でつまずくことが多いです。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_006",
+      "question": "VLANを使用する主な目的として最も適切なものはどれか？",
+      "choices": [
+        "物理的な配線を削減する",
+        "通信を暗号化する",
+        "論理的にネットワークを分割しブロードキャストドメインを制限する",
+        "IPアドレスの自動割り当てを行う"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VLAN（Virtual LAN）は、物理的には同じネットワーク機器につながっていても、論理的に別々のネットワークとして扱える技術です。例えば、同じオフィスでも「営業部」「開発部」を別のVLANにすることで、セキュリティを高めたり、不要な通信を減らせます。クラウド環境でも同様に、本番環境と開発環境を論理的に分離する際にVLANの考え方が使われます。",
+      "difficulty": "intermediate",
+      "category": "switching"
+    },
+    {
+      "id": "network_intermediate_007",
+      "question": "TLSハンドシェイクで行われないものはどれか？",
+      "choices": [
+        "使用する暗号スイートの合意",
+        "サーバー証明書の検証",
+        "セッション鍵の生成",
+        "ユーザーのパスワード認証"
+      ],
+      "correctAnswer": 3,
+      "explanation": "TLSハンドシェイクは、暗号化通信を始める前の「準備作業」です。①どの暗号方式を使うか合意、②サーバー証明書で「本物のサーバーか」を確認、③暗号化に使う鍵を生成・交換、という流れで行われます。ユーザーのパスワード認証は、この暗号化された通信路が確立した「後」にアプリケーション側で行われます。つまりTLSは「通信の暗号化」、ログインは「ユーザーの本人確認」と役割が分かれています。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_008",
+      "question": "ロードバランサーのラウンドロビン方式の説明として正しいものはどれか？",
+      "choices": [
+        "サーバーの負荷状況に応じて動的に振り分ける",
+        "リクエストを順番に各サーバーに振り分ける",
+        "クライアントのIPアドレスに基づいて振り分ける",
+        "レスポンス時間が最短のサーバーに振り分ける"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ラウンドロビン方式は、複数のサーバーに「順番に」リクエストを振り分ける、最もシンプルな負荷分散の方法です。サーバーA→B→C→A→B→C...と機械的に回します。実装が簡単な反面、サーバーごとの処理能力の違いや、現在の負荷状況を考慮しないため、不均等な負荷が発生することがあります。AIサービスの裏側でも、大量のリクエストをさばくためにロードバランサーが使われています。",
+      "difficulty": "intermediate",
+      "category": "cloud-network"
+    },
+    {
+      "id": "network_intermediate_009",
+      "question": "WebSocketがHTTPと比較して優れている点はどれか？",
+      "choices": [
+        "通信の暗号化が標準でサポートされている",
+        "双方向のリアルタイム通信が可能である",
+        "キャッシュが効きやすい",
+        "ファイアウォールを通過しやすい"
+      ],
+      "correctAnswer": 1,
+      "explanation": "WebSocketは、一度接続したら切れるまで双方向でやり取りできる通信方式です。通常のHTTPは「クライアントが聞く→サーバーが答える」の繰り返しですが、WebSocketは「サーバーからも自由にメッセージを送れる」のが特徴です。リアルタイムチャット、オンラインゲーム、株価のリアルタイム表示などに使われます。ChatGPTのようなAIチャットでリアルタイムに文字が表示されるのも、この技術のおかげです。",
+      "difficulty": "intermediate",
+      "category": "http"
+    },
+    {
+      "id": "network_intermediate_010",
+      "question": "CDN（Content Delivery Network）の主なメリットとして適切でないものはどれか？",
+      "choices": [
+        "ユーザーに近いサーバーからコンテンツを配信できる",
+        "オリジンサーバーの負荷を軽減できる",
+        "DDoS攻撃への耐性を向上できる",
+        "データベースのクエリを最適化できる"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CDN（Content Delivery Network）は、世界中にコンテンツの「コピー」を配置して、ユーザーに近い場所から配信する仕組みです。日本のユーザーがアメリカのサーバーにアクセスするより、日本国内のCDNサーバーからコンテンツを受け取る方が速いですよね。画像、動画、JavaScriptファイルなど「変わらないコンテンツ」の配信に適しています。データベースへのクエリは毎回内容が変わるため、CDNでは対応できません。",
+      "difficulty": "intermediate",
+      "category": "cloud-network"
+    },
+    {
+      "id": "network_intermediate_011",
+      "question": "OAuth 2.0のアクセストークンの説明として正しいものはどれか？",
+      "choices": [
+        "ユーザーの認証情報（ID/パスワード）を含む",
+        "クライアントがリソースにアクセスするための認可情報を含む",
+        "永続的に有効で更新の必要がない",
+        "必ずJWT形式である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "OAuth 2.0のアクセストークンは「このアプリがあなたの代わりにデータにアクセスしていいですよ」という許可証です。Googleアカウントで他のアプリにログインするとき、パスワードをそのアプリに渡すのではなく、アクセストークンを渡します。トークンには有効期限があり、期限が切れたらリフレッシュトークンで更新します。AIサービスのAPIを使う際も、この仕組みで認可を受けることが多いです。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_012",
+      "question": "BGPプロトコルの主な用途として正しいものはどれか？",
+      "choices": [
+        "同一LAN内でのMACアドレス解決",
+        "インターネット上の自律システム間での経路交換",
+        "DHCP による IP アドレスの割り当て",
+        "DNS によるドメイン名解決"
+      ],
+      "correctAnswer": 1,
+      "explanation": "BGP（Border Gateway Protocol）は「インターネットの道案内役」です。インターネットは多数の自律システム（AS：ISPや大企業が運営するネットワーク）がつながってできていますが、BGPがAS間で経路情報を交換することで、世界中のどこにでもデータを届けられます。BGPの設定ミスで大規模な通信障害が起きたニュースを聞くことがありますが、それほどインターネットの根幹を支える重要なプロトコルです。",
+      "difficulty": "intermediate",
+      "category": "routing"
+    },
+    {
+      "id": "network_intermediate_013",
+      "question": "レート制限（Rate Limiting）をAPIに実装する主な目的はどれか？",
+      "choices": [
+        "通信を暗号化するため",
+        "サービスの安定性を保ち不正利用を防ぐため",
+        "レスポンスを圧縮するため",
+        "認証を強化するため"
+      ],
+      "correctAnswer": 1,
+      "explanation": "レート制限（Rate Limiting）は「一定時間内のアクセス回数を制限する」仕組みです。例えば「1分間に100回まで」という制限を設けることで、悪意のある大量アクセス（DoS攻撃）を防いだり、APIの過負荷を防いだりします。AIのAPIも多くがレート制限を設けており、超えるとHTTP 429（Too Many Requests）が返されます。API利用時は、この制限を意識した設計が必要です。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_014",
+      "question": "JSONWebToken（JWT）の構造として正しいものはどれか？",
+      "choices": [
+        "暗号文のみ",
+        "ヘッダー、ペイロード、署名の3部分",
+        "公開鍵と秘密鍵のペア",
+        "ユーザーIDとパスワードのハッシュ"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JWT（JSON Web Token）は、ログイン情報などを安全にやり取りするための形式で、3つのパーツで構成されます。①ヘッダー（どの暗号方式を使うか）、②ペイロード（ユーザーIDなどの実データ）、③署名（改ざんされていないことの証明）をBase64でエンコードし、ドット（.）でつなげた文字列です。注意点として、ペイロードは暗号化されていないため、誰でも中身を見られます。パスワードなどの秘密情報は入れてはいけません。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_015",
+      "question": "リバースプロキシの役割として正しくないものはどれか？",
+      "choices": [
+        "クライアントの匿名性を確保する",
+        "バックエンドサーバーへの負荷分散",
+        "SSL終端処理",
+        "静的コンテンツのキャッシング"
+      ],
+      "correctAnswer": 0,
+      "explanation": "リバースプロキシは「サーバー側の代理人」として、クライアントからのリクエストを受けて、裏にいる本当のサーバーに転送します。NginxやCloudflareがよく使われます。主な役割は、複数サーバーへの負荷分散、SSL/TLS暗号化の処理、静的コンテンツのキャッシュなどです。「クライアントの匿名性確保」は、クライアント側に置くフォワードプロキシの役割です。AIサービスの多くも、リバースプロキシを通じてリクエストを受け付けています。",
+      "difficulty": "intermediate",
+      "category": "cloud-network"
+    },
+    {
+      "id": "network_intermediate_016",
+      "question": "IPsecのトンネルモードとトランスポートモードの違いとして正しいものはどれか？",
+      "choices": [
+        "トンネルモードはTCP、トランスポートモードはUDPを使用する",
+        "トンネルモードは元のIPヘッダーも暗号化するが、トランスポートモードはペイロードのみ暗号化する",
+        "トンネルモードは認証のみ、トランスポートモードは暗号化のみを行う",
+        "トンネルモードはIPv4専用、トランスポートモードはIPv6専用である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IPsec（IP Security）はVPNなどで使われる暗号化技術で、2つのモードがあります。トンネルモードは、元のパケット全体（IPヘッダーも含めて）を暗号化し、新しいIPヘッダーを付けて送ります。主にVPNゲートウェイ間の通信で使います。トランスポートモードは、データ部分のみ暗号化し、元のIPヘッダーはそのまま使います。用途に応じて使い分けられます。",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": "network_intermediate_017",
+      "question": "HTTP/2の特徴として正しくないものはどれか？",
+      "choices": [
+        "ヘッダー圧縮によるオーバーヘッド削減",
+        "単一のTCP接続で複数のリクエストを並行処理",
+        "サーバープッシュ機能のサポート",
+        "テキストベースのプロトコル"
+      ],
+      "correctAnswer": 3,
+      "explanation": "HTTP/2は従来のHTTP/1.1を大幅に改良したバージョンです。最大の違いは「バイナリプロトコル」になったこと。HTTP/1.1は人間が読めるテキスト形式でしたが、HTTP/2は効率重視でバイナリ（0と1のデータ）になりました。また、1つの接続で複数のリクエストを同時に処理できる「多重化」、データ圧縮（HPACK）、サーバーから先にデータを送れる「サーバープッシュ」などの機能があります。",
+      "difficulty": "intermediate",
+      "category": "http"
+    },
+    {
+      "id": "network_intermediate_018",
+      "question": "AWSのVPCにおいて、インターネットへの通信を可能にするために必要なものはどれか？",
+      "choices": [
+        "NATゲートウェイのみ",
+        "インターネットゲートウェイのみ",
+        "インターネットゲートウェイとパブリックサブネット",
+        "VPNゲートウェイのみ"
+      ],
+      "correctAnswer": 2,
+      "explanation": "AWSのVPC（Virtual Private Cloud）からインターネットにアクセスするには、①インターネットゲートウェイ（IGW）をVPCにつなげ、②パブリックサブネットのルートテーブルでIGWへの経路を設定する必要があります。プライベートサブネット（外部公開しないサーバー用）からインターネットに出る場合は、さらにNATゲートウェイを経由します。クラウドでAIシステムを構築する際、このネットワーク設計は必須の知識です。",
+      "difficulty": "intermediate",
+      "category": "cloud-network"
+    },
+    {
+      "id": "network_intermediate_019",
+      "question": "ARPプロトコルの役割として正しいものはどれか？",
+      "choices": [
+        "ドメイン名をIPアドレスに変換する",
+        "IPアドレスをMACアドレスに変換する",
+        "IPアドレスを自動的に割り当てる",
+        "パケットの経路を決定する"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ARP（Address Resolution Protocol）は「IPアドレスからMACアドレスを調べる」プロトコルです。同じネットワーク内でデータを送るとき、相手のMACアドレス（物理的な住所）が必要ですが、通常はIPアドレス（論理的な住所）しか知りません。ARPは「このIPアドレスの人、MACアドレス教えて！」とネットワーク内に呼びかけ、対応するMACアドレスを取得します。DNSが「ドメイン名→IP」なのに対し、ARPは「IP→MAC」の変換です。",
+      "difficulty": "intermediate",
+      "category": "network-basics"
+    },
+    {
+      "id": "network_intermediate_020",
+      "question": "GraphQL APIとREST APIの違いとして正しいものはどれか？",
+      "choices": [
+        "GraphQLはHTTPを使用しないが、RESTはHTTPを使用する",
+        "GraphQLはクライアントが必要なデータを指定でき、オーバーフェッチを防げる",
+        "RESTの方がGraphQLより常にパフォーマンスが良い",
+        "GraphQLはキャッシュが容易だがRESTは困難である"
+      ],
+      "correctAnswer": 1,
+      "explanation": "GraphQLは、クライアントが「欲しいデータだけ」を指定できるAPIの仕組みです。RESTだと決められた形式でデータが返ってくるため、不要なデータまで受け取ってしまうことがあります（オーバーフェッチ）。GraphQLなら「名前と年齢だけ欲しい」と指定すれば、それだけが返ってきます。逆に、複数の情報を1回のリクエストでまとめて取ることもできます。モバイルアプリなど、通信量を抑えたい場面で特に有効です。",
+      "difficulty": "intermediate",
+      "category": "http"
+    }
+  ]
+}
