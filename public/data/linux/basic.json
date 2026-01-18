@@ -1,52 +1,284 @@
 {
-  "categoryId": "linux",
-  "difficulty": "basic",
-  "version": "1.0.0",
   "questions": [
     {
       "id": "linux_basic_001",
-      "question": "現在のディレクトリ（自分がいる場所）のパスを表示するコマンドは？",
-      "choices": ["ls", "pwd", "cd", "where"],
-      "correctAnswer": 1,
-      "explanation": "「pwd (print working directory)」は、迷子になった時に使う基本コマンドです。AI学習時、データセットのパス指定ミス（File Not Foundエラー）を防ぐために、まずpwdで現在地を確認するのが鉄則です。",
-      "tags": ["cli", "filesystem"],
-      "aiEraRelevance": true
+      "question": "AIが\"ファイルを `output` ディレクトリに保存しました\"と言っていますが、そもそも自分が今どのディレクトリにいるのか確認するコマンドは？",
+      "choices": [
+        "ls",
+        "whoami",
+        "pwd",
+        "where"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nAIは相対パス（`./`）で場所を指定することが多いです。「今どこにいるか」がわからないと、せっかくAIが作ったファイルを見失います。\n\n📖 **基礎知識**\n**pwd**（Print Working Directory）は、カレントディレクトリ（現在作業している場所）の絶対パスを表示するコマンドです。\n\n💡 **実務での具体例**\n・**シーン1:** コンソールで`pwd`と打ち、`/home/user/project` と表示させて現在地を把握。\n・**シーン2:** AIに「`/var/www` ではなく、今いるディレクトリに保存して」と指示する際の確認。\n・**シーン3:** ファイルが見つからない時、意図しない場所にいないか確認する。",
+      "difficulty": "basic",
+      "category": "directory-basics"
     },
     {
       "id": "linux_basic_002",
-      "question": "ファイルやディレクトリを削除するコマンドは？（※ゴミ箱には入らない）",
-      "choices": ["rm", "del", "trash", "remove"],
+      "question": "ディレクトリ内のファイル一覧を表示したいですが、`.env` や `.git` などの隠しファイルが表示されません。これらを含めて表示するコマンドは？",
+      "choices": [
+        "ls -a",
+        "ls -l",
+        "ls -h",
+        "show all"
+      ],
       "correctAnswer": 0,
-      "explanation": "「rm (remove)」コマンドで削除します。Windowsのゴミ箱と違い、一度実行すると二度と戻らないことが多いため、AIの学習済みモデルなど重要なファイルを消す際は細心の注意が必要です。",
-      "tags": ["cli", "filesystem"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\nAI開発では、APIキー設定ファイル（`.env`）やGit設定（`.git`）など、ドットから始まる隠しファイルが極めて重要です。\n\n📖 **基礎知識**\n**ls**（List Segments）はファイル一覧を表示します。`-a` オプション（All）をつけると、`.`（ドット）から始まる隠しファイルも表示されます。\n\n💡 **実務での具体例**\n・**シーン1:** `ls -a` で `.env` が存在するか確認する（これがないとAPIが動かない）。\n・**シーン2:** `ls -la` で隠しファイルの詳細（権限やサイズ）まで確認する。\n・**シーン3:** AIに「`.gitignore` ファイルがあるか確認して」と言われた時に使う。",
+      "difficulty": "basic",
+      "category": "directory-basics"
     },
     {
       "id": "linux_basic_003",
-      "question": "新しいディレクトリ（フォルダ）を作成するコマンドは？",
-      "choices": ["new", "md", "mkdir", "create"],
-      "correctAnswer": 2,
-      "explanation": "「mkdir (make directory)」を使います。「mkdir -p data/train/images」のように「-p」オプションをつけると、途中のフォルダもまとめて作れるので、AIのデータ整理で重宝します。",
-      "tags": ["cli", "filesystem"],
-      "aiEraRelevance": true
+      "question": "深い階層のディレクトリにいましたが、一発で自分のホームディレクトリに戻りたいときに使うコマンドは？",
+      "choices": [
+        "cd ..",
+        "cd /",
+        "cd -",
+        "cd ~"
+      ],
+      "correctAnswer": 3,
+      "explanation": "🎯 **AI時代でこう使う**\n作業場所が散らかった時、一旦拠点のホームディレクトリに戻って体制を立て直すための基本操作です。\n\n📖 **基礎知識**\n**cd**（Change Directory）は場所を移動するコマンドです。`~`（チルダ）はユーザーのホームディレクトリ（例: `/home/ishii`）を表すショートカットです。単に `cd` と打つだけでもホームに戻れます。\n\n💡 **実務での具体例**\n・**シーン1:** `cd ~/projects` のように、どこからでもプロジェクトフォルダへ移動する。\n・**シーン2:** 誤ってシステム領域（`/etc`など）に入ってしまった時、`cd` で安全地帯に戻る。\n・**シーン3:** プロンプトの表示が `user@host:~$` の `~` はホームにいることを示している。",
+      "difficulty": "basic",
+      "category": "directory-basics"
     },
     {
       "id": "linux_basic_004",
-      "question": "ディレクトリを移動するコマンドは？",
-      "choices": ["mv", "go", "cd", "ls"],
-      "correctAnswer": 2,
-      "explanation": "「cd (change directory)」で移動します。「cd ..」で一つ上へ、「cd ~」でホームへ移動します。CUI操作の基本中の基本です。",
-      "tags": ["cli", "filesystem"],
-      "aiEraRelevance": true
+      "question": "ClaudeCodeが作成した設定ファイル `config.json` の中身を、エディタを開かずにサッと確認したい場合に使うコマンドは？",
+      "choices": [
+        "cat config.json",
+        "touch config.json",
+        "ls config.json",
+        "write config.json"
+      ],
+      "correctAnswer": 0,
+      "explanation": "🎯 **AI時代でこう使う**\n\"設定ファイル書き換えました\"とAIが言った時、本当に書き換わっているかターミナル上で数秒で確認できます。\n\n📖 **基礎知識**\n**cat**（Catenate）はファイルの内容を連結して標準出力（画面）に表示するコマンドです。短いファイルの中身確認によく使われます。\n\n💡 **実務での具体例**\n・**シーン1:** `cat .env` でAPIキーが正しく保存されているか確認。\n・**シーン2:** `cat requirements.txt` でインストールされるライブラリ一覧を見る。\n・**シーン3:** 長いファイルの場合は `cat` だと流れてしまうので `less` を使う。",
+      "difficulty": "basic",
+      "category": "file-operations"
     },
     {
       "id": "linux_basic_005",
-      "question": "ファイルの中身を閲覧するコマンドは？",
-      "choices": ["cat", "dog", "read", "open"],
+      "question": "AIが大量のログを出力するスクリプトを実行中です。ターミナルでログの追記をリアルタイムに監視し続けるコマンドは？",
+      "choices": [
+        "cat logs.txt",
+        "head logs.txt",
+        "tail -f logs.txt",
+        "grep logs.txt"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nAIモデルの学習やサーバーの起動ログなど、「動いている途中」の状況を見守るために必須のスキルです。\n\n📖 **基礎知識**\n**tail** はファイルの末尾を表示します。`-f`（Follow）オプションをつけると、ファイルへの追記を監視し、リアルタイムに画面更新し続けます。終了は `Ctrl + C` です。\n\n💡 **実務での具体例**\n・**シーン1:** `tail -f error.log` でエラーが発生した瞬間を待ち構える。\n・**シーン2:** サーバー起動中に「今誰かがアクセスした」ことをログで目視確認。\n・**シーン3:** 学習の進捗（Epoch 1, Epoch 2...）を眺める。",
+      "difficulty": "basic",
+      "category": "logging"
+    },
+    {
+      "id": "linux_basic_006",
+      "question": "ファイル名を `app_v1.py` から `app.py` に変更したい（リネームしたい）場合に使用するコマンドは？",
+      "choices": [
+        "rn app_v1.py app.py",
+        "cp app_v1.py app.py",
+        "mv app_v1.py app.py",
+        "change app_v1.py app.py"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nAIはよく\"`backup.py` を作りました\"などの別名保存をします。これを本番用の名前に変えて動かす時に使います。\n\n📖 **基礎知識**\n**mv**（Move）はファイルを移動するコマンドですが、同じディレクトリ内で移動先を新しい名前にすれば「リネーム」になります。\n\n💡 **実務での具体例**\n・**シーン1:** `mv index.js.backup index.js` でバックアップから復元する。\n・**シーン2:** `mv` でファイルを別のディレクトリ（`src/`など）に移動して整理する。\n・**シーン3:** ファイルを上書きしてしまう恐れがあるため慎重に操作する。",
+      "difficulty": "basic",
+      "category": "file-operations"
+    },
+    {
+      "id": "linux_basic_007",
+      "question": "不要になったディレクトリ `temp_data` を、中身のファイルごと強制的に削除するコマンドは？（※取り扱い注意）",
+      "choices": [
+        "rm temp_data",
+        "rmdir temp_data",
+        "rm -rf temp_data",
+        "del temp_data"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nAIが作った大量のゴミファイルや、壊れた仮想環境（venv）を一掃してやり直す時によく使います。\n\n📖 **基礎知識**\n**rm**（Remove）は削除コマンドです。ディレクトリを消すには `-r`（Recursive：再帰的）、確認メッセージを出さないために `-f`（Force：強制）を組み合わせた `rm -rf` がよく使われます。**復元できないので超注意！**\n\n💡 **実務での具体例**\n・**シーン1:** `rm -rf node_modules` で依存ライブラリを全消去し、インストールし直す。\n・**シーン2:** 削除前に必ず `ls` で消す対象を確認する癖をつける。\n・**シーン3:** AIに「クリーンアップ用のコマンド教えて」と聞くとこれを提示されることが多い。",
+      "difficulty": "basic",
+      "category": "file-operations"
+    },
+    {
+      "id": "linux_basic_008",
+      "question": "AIが作成したスクリプト `deploy.sh` を実行しようとしたら「Permission denied」となりました。実行権限を与えるコマンドは？",
+      "choices": [
+        "sudo deploy.sh",
+        "chmod +x deploy.sh",
+        "chown user deploy.sh",
+        "allow deploy.sh"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nAIが生成したシェルスクリプトは、デフォルトでは実行権限がついていません。これを知らないと「AIのコードが動かない！」とパニックになります。\n\n📖 **基礎知識**\n**chmod**（Change Mode）は権限変更コマンドです。`+x` は「実行権限（eXecutable）を追加する」という意味です。\n\n💡 **実務での具体例**\n・**シーン1:** `./script.sh` でエラー → `chmod +x script.sh` してから再実行。\n・**シーン2:** `ls -l` で確認し、`-rw-r--r--`（実行不可）から `-rwxr-xr-x`（実行可）に変わったか見る。\n・**シーン3:** サーバーデプロイ時にこの権限設定を忘れてエラーになるのは「あるある」。",
+      "difficulty": "basic",
+      "category": "permissions"
+    },
+    {
+      "id": "linux_basic_009",
+      "question": "システム全体に関わるパッケージ（例: git）をインストールしようとしたら権限エラーになりました。管理者権限で実行するために先頭に付けるコマンドは？",
+      "choices": [
+        "admin",
+        "root",
+        "please",
+        "sudo"
+      ],
+      "correctAnswer": 3,
+      "explanation": "🎯 **AI時代でこう使う**\nAIが「これをインストールしてください」と提示するコマンドには `sudo` がついていることが多いです。これは「管理者の力を使う」魔法の言葉です。\n\n📖 **基礎知識**\n**sudo**（SuperUser DO）は、一時的にルート（管理者）権限でコマンドを実行するものです。システムの変更やソフトのインストールには必須です。\n\n💡 **実務での具体例**\n・**シーン1:** `apt install git` でエラー → `sudo apt install git` で成功。\n・**シーン2:** パスワードを聞かれたら、PCのログインパスワードを入力（画面には表示されない）。\n・**シーン3:** 何でもかんでも `sudo` をつけるのは危険（ファイルの所有者がrootになってしまう）。",
+      "difficulty": "basic",
+      "category": "permissions"
+    },
+    {
+      "id": "linux_basic_010",
+      "question": "実行中のPythonプログラムが無限ループに入って止まりません。強制終了させるためのキー操作は？",
+      "choices": [
+        "Ctrl + C",
+        "Ctrl + Z",
+        "Ctrl + D",
+        "Esc"
+      ],
       "correctAnswer": 0,
-      "explanation": "「cat」コマンドを使います。設定ファイルの中身や、エラーログの内容をサッと確認したい時に使います。長いファイルの場合は「less」を使うこともあります。",
-      "tags": ["cli", "filesystem"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\nAIが書いたコードがバグっていて処理が終わらないことは日常茶飯事です。暴走したプログラムを止める緊急停止ボタンです。\n\n📖 **基礎知識**\n**Ctrl + C** は、実行中のプロセスに「割り込みシグナル（SIGINT）」を送り、処理を中断・終了させます。\n\n💡 **実務での具体例**\n・**シーン1:** サーバーを起動しっぱなしにしていたターミナルで `Ctrl + C` を押して停止する。\n・**シーン2:** 学習処理が長すぎるので一旦止めたい時に使う。\n・**シーン3:** `Ctrl + Z` は「一時停止（バックグラウンドへ送る）」なので間違いやすい。",
+      "difficulty": "basic",
+      "category": "process-management"
+    },
+    {
+      "id": "linux_basic_011",
+      "question": "バックグラウンドで動いているゾンビプロセスを探したい時、現在実行中のプロセス一覧を表示するコマンドは？",
+      "choices": [
+        "ls",
+        "ps aux",
+        "process -all",
+        "jobs"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\n\"ポートが既に使用されています\"というエラーが出た時、裏で生き残っている古いプロセスを見つけ出して始末するために使います。\n\n📖 **基礎知識**\n**ps**（Process Status）はプロセスを表示します。`aux` オプションをつけると、全ユーザーの全プロセスを詳細に表示できます。\n\n💡 **実務での具体例**\n・**シーン1:** `ps aux | grep python` で、動いているPythonプログラムだけを検索する。\n・**シーン2:** プロセスID（PID）を見つけて、次の `kill` コマンドで停止させる。\n・**シーン3:** CPUを暴走させている犯人プロセスを特定する。",
+      "difficulty": "basic",
+      "category": "process-management"
+    },
+    {
+      "id": "linux_basic_012",
+      "question": "プロセスID（PID）が `1234` のプロセスを強制終了させるコマンドは？",
+      "choices": [
+        "stop 1234",
+        "end 1234",
+        "kill 1234",
+        "remove 1234"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\n`Ctrl + C` でも止まらない、あるいはバックグラウンドで暴走しているAIプログラムを確実に息の根を止めるためのコマンドです。\n\n📖 **基礎知識**\n**kill** はプロセスにシグナルを送るコマンドです。通常は終了依頼を送りますが、言うことを聞かない場合は `kill -9 1234` で強制終了させます。\n\n💡 **実務での具体例**\n・**シーン1:** `ps aux` でIDを確認し、`kill 1234` で終了。\n・**シーン2:** サーバー再起動時に、古いサーバープロセスが残っていたので手動でキルする。\n・**シーン3:** 自分の管理外のプロセスは `sudo kill` しないと消せない。",
+      "difficulty": "basic",
+      "category": "process-management"
+    },
+    {
+      "id": "linux_basic_013",
+      "question": "巨大なログファイルの中から「Error」という文字が含まれる行だけを抜き出して表示したい。使うべきコマンドは？",
+      "choices": [
+        "find logs.txt Error",
+        "search Error logs.txt",
+        "grep Error logs.txt",
+        "locate Error"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\n数万行あるAIの学習ログから、エラーの原因箇所を一瞬で特定するための最強の検索ツールです。\n\n📖 **基礎知識**\n**grep**（Global Regular Expression Print）は、ファイル内の文字列検索コマンドです。`grep \"検索語\" ファイル名` で使います。\n\n💡 **実務での具体例**\n・**シーン1:** `grep \"Exception\" app.log` でプログラムが落ちた原因を探す。\n・**シーン2:** パイプ `|` と組み合わせて、`ps aux | grep python` のようにコマンド結果から絞り込む。\n・**シーン3:** `-i` オプションをつけると大文字小文字を区別せず検索できる。",
+      "difficulty": "basic",
+      "category": "logging"
+    },
+    {
+      "id": "linux_basic_014",
+      "question": "インターネットに繋がっているか、または特定のサーバー（google.comなど）が生きているかを確認するためのコマンドは？",
+      "choices": [
+        "ping google.com",
+        "connect google.com",
+        "wifi status",
+        "ls google.com"
+      ],
+      "correctAnswer": 0,
+      "explanation": "🎯 **AI時代でこう使う**\n\"APIがつながらない！\"という時、自分のネットが切れているのか、相手がダウンしているのかを切り分ける最初の手段です。\n\n📖 **基礎知識**\n**ping** は相手に小さなデータを送り、返事が来るかを確認するコマンドです。`Ctrl + C` で止めるまで続きます。\n\n💡 **実務での具体例**\n・**シーン1:** `ping 8.8.8.8`（GoogleのDNS）に打って、インターネット接続を確認。\n・**シーン2:** タイムアウトする場合、ファイアウォールでブロックされているか、回線切断を疑う。\n・**シーン3:** 社内サーバーのIPにPingを打って生存確認する。",
+      "difficulty": "basic",
+      "category": "network-commands"
+    },
+    {
+      "id": "linux_basic_015",
+      "question": "AIが作成したAPIエンドポイント `http://localhost:8000` に対して、ターミナルから直接リクエストを送って動作確認するコマンドは？",
+      "choices": [
+        "request http://localhost:8000",
+        "curl http://localhost:8000",
+        "get http://localhost:8000",
+        "ping http://localhost:8000"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nブラウザを使わずにAPIの動作テストができる、エンジニアの必須ツールです。AIに\"curlコマンドでテストして\"と指示されることも多いです。\n\n📖 **基礎知識**\n**curl**（Client for URL）は、URLを指定してデータを送受信するコマンドです。WebページのHTMLやAPIのJSONレスポンスを取得できます。\n\n💡 **実務での具体例**\n・**シーン1:** `curl http://localhost:3000/api/users` でJSONが返ってくるか確認。\n・**シーン2:** `-X POST` オプションを使ってデータを送信テストする。\n・**シーン3:** `-v`（Verbose）オプションで通信の詳細（ヘッダーなど）を見る。",
+      "difficulty": "basic",
+      "category": "network-commands"
+    },
+    {
+      "id": "linux_basic_016",
+      "question": "Pythonのライブラリ（numpyやpandasなど）をインストールするためのコマンドは？",
+      "choices": [
+        "apt install numpy",
+        "pip install numpy",
+        "npm install numpy",
+        "install numpy"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\n\"ModuleNotFoundError\"が出たらこれの出番。AI開発で最も頻繁に打つコマンドの一つです。\n\n📖 **基礎知識**\n**pip** はPythonのパッケージ管理ツールです。`pip install パッケージ名` でライブラリをダウンロードして環境に追加します。\n\n💡 **実務での具体例**\n・**シーン1:** エラーが出たら `pip install -r requirements.txt` で必要な全ライブラリを一括インストール。\n・**シーン2:** `pip list` でインストール済みのライブラリを確認。\n・**シーン3:** AIに「必要なライブラリをインストールするコマンド教えて」と聞くとこれを返してくる。",
+      "difficulty": "basic",
+      "category": "package-management"
+    },
+    {
+      "id": "linux_basic_017",
+      "question": "Pythonプログラムを実行しようとしたら「command not found: python」と言われました。Pythonがどこにインストールされているか（パス）を確認するコマンドは？",
+      "choices": [
+        "find python",
+        "search python",
+        "which python",
+        "who python"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\n\"Pythonが動かない\"時、システム標準のPythonを見ているのか、仮想環境のPythonを見ているのかを確認して混乱を防ぎます。\n\n📖 **基礎知識**\n**which** は、コマンドが格納されている場所（絶対パス）を表示します。何も表示されなければ、インストールされていないか、PATHが通っていません。\n\n💡 **実務での具体例**\n・**シーン1:** `which python` → `/usr/bin/python` ならシステム全体のもの。\n・**シーン2:** 仮想環境（venv）有効化中に実行し、環境内のPythonを指しているか確認。\n・**シーン3:** `python3` か `python` か、コマンド名の確認にも使う。",
+      "difficulty": "basic",
+      "category": "environment"
+    },
+    {
+      "id": "linux_basic_018",
+      "question": "APIキーなどを環境変数 `API_KEY` として一時的に設定するためのコマンドは？",
+      "choices": [
+        "set API_KEY=12345",
+        "export API_KEY=12345",
+        "env API_KEY=12345",
+        "echo API_KEY=12345"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nコードにパスワードを直書きするのは御法度です。AIアプリを動かす際は、必ずこのコマンドか `.env` ファイルで鍵を渡します。\n\n📖 **基礎知識**\n**export** は環境変数を設定するコマンドです。設定した変数は、そのターミナルで実行されるプログラムから読み取ることができます。\n\n💡 **実務での具体例**\n・**シーン1:** `export OPENAI_API_KEY=sk-xxxx` と打ってから `python app.py` を実行。\n・**シーン2:** `echo $OPENAI_API_KEY` で正しく設定されたか確認。\n・**シーン3:** ターミナルを閉じると消えるので、永続化には `.bashrc` などに書く。",
+      "difficulty": "basic",
+      "category": "environment"
+    },
+    {
+      "id": "linux_basic_019",
+      "question": "空のファイルを作成したり、ファイルの最終更新日時を現在時刻に更新したりするコマンドは？",
+      "choices": [
+        "new",
+        "make",
+        "touch",
+        "add"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\n\"中身は後でAIに書かせるけど、とりあえずファイルだけ作っておきたい\"という時や、Git用の `.gitkeep` を作る時に使います。\n\n📖 **基礎知識**\n**touch** は本来ファイルのタイムスタンプを更新するコマンドですが、存在しないファイル名を指定するとサイズ0の空ファイルを作成します。\n\n💡 **実務での具体例**\n・**シーン1:** `touch .gitignore` で空の設定ファイルを作成。\n・**シーン2:** `touch requirements.txt` でファイルを作ってからエディタで開く。\n・**シーン3:** サーバーに「設定ファイルを変更した」と認識させるために更新日時だけ変える。",
+      "difficulty": "basic",
+      "category": "file-operations"
+    },
+    {
+      "id": "linux_basic_020",
+      "question": "コマンドの実行結果を画面に表示するのではなく、ファイルに保存（リダイレクト）するための記号は？",
+      "choices": [
+        "|",
+        ">".
+        "&",
+        "$"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nAIの学習ログやエラーログをファイルに残しておき、後でAIに「このエラーログを解析して」と渡すために必須です。\n\n📖 **基礎知識**\n**>**（リダイレクト）を使います。`コマンド > ファイル名` で出力内容をファイルに書き込みます。`>>` にすると上書きせず追記します。\n\n💡 **実務での具体例**\n・**シーン1:** `python app.py > log.txt` で実行ログを保存。\n・**シーン2:** `pip freeze > requirements.txt` でインストール済みライブラリ一覧を保存。\n・**シーン3:** 画面に出るエラーメッセージが消えてしまうのを防ぐ。",
+      "difficulty": "basic",
+      "category": "file-operations"
     }
   ]
 }

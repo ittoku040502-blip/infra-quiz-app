@@ -14,43 +14,78 @@
       ],
       "correctAnswer": 1,
       "explanation": "これがDockerの基本概念です。「Image（イメージ）」はOSやライブラリが固められた変更不可能な『金型（または冷凍食品）』です。それを `docker run` して動かした実体が「Container（コンテナ）」です。AI開発では、誰かが作った便利なImageを持ってきて、自分のPC上でContainerとして動かすのがスタート地点です。",
-      "tags": ["docker", "basics"],
+      "tags": [
+        "docker",
+        "basics"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_basic_002",
       "question": "インターネット上の「Image置き場（スーパーマーケット）」から、自分のPCにImageをダウンロードするコマンドは？",
-      "choices": ["docker pull", "docker push", "docker fetch", "docker get"],
+      "choices": [
+        "docker pull",
+        "docker push",
+        "docker fetch",
+        "docker get"
+      ],
       "correctAnswer": 0,
       "explanation": "「docker pull」です。Docker Hubなどのレジストリから、「PyTorch入り」や「Ubuntu」などのイメージを手元に引っ張ってきます（Pull）。逆に、自分が作ったイメージをアップロードするのは「docker push」です。",
-      "tags": ["docker", "commands"],
+      "tags": [
+        "docker",
+        "commands"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_basic_003",
       "question": "コンテナは削除すると中のデータも消えます。AIの学習データなどを消さずに永続化するための機能は？",
-      "choices": ["Volume (ボリューム)", "Image (イメージ)", "Bridge (ブリッジ)", "Layer (レイヤー)"],
-      "correctAnswer": 0,
+      "choices": [
+        "Image (イメージ)",
+        "Bridge (ブリッジ)",
+        "Volume (ボリューム)",
+        "Layer (レイヤー)"
+      ],
+      "correctAnswer": 2,
       "explanation": "コンテナは「使い捨て」が基本です。しかし、数日かけて学習したAIモデルまで消えると困ります。そこで「Volume（ボリューム）」機能（またはバインドマウント）を使い、コンテナの中の特定のフォルダを、自分のPC（ホスト）のフォルダと直結させます。こうすればコンテナを消してもデータは残ります。",
-      "tags": ["docker", "storage"],
+      "tags": [
+        "docker",
+        "storage"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_basic_004",
       "question": "自分専用のImageを作るための手順書（レシピ）となるテキストファイルの名前は？",
-      "choices": ["Containerfile", "Makeimage", "Dockerfile", "Recipe.txt"],
-      "correctAnswer": 2,
+      "choices": [
+        "Containerfile",
+        "Makeimage",
+        "Recipe.txt",
+        "Dockerfile"
+      ],
+      "correctAnswer": 3,
       "explanation": "「Dockerfile」です。ここに「Python 3.9を入れて」「Numpyを入れて」「このファイルをコピーして」という手順を書きます。これを `docker build` することで、いつでも誰でも同じ環境（Image）を再現できます。「環境構築手順書」の決定版です。",
-      "tags": ["docker", "dockerfile"],
+      "tags": [
+        "docker",
+        "dockerfile"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_basic_005",
       "question": "コンテナ内で動いているWebアプリ（例: 80番ポート）に、ブラウザからアクセスできるようにする「ドアを開ける」設定は？",
-      "choices": ["ポートフォワーディング (-p)", "ボリュームマウント (-v)", "バックグラウンド実行 (-d)", "インタラクティブモード (-it)"],
+      "choices": [
+        "ポートフォワーディング (-p)",
+        "ボリュームマウント (-v)",
+        "バックグラウンド実行 (-d)",
+        "インタラクティブモード (-it)"
+      ],
       "correctAnswer": 0,
       "explanation": "コンテナは隔離された箱なので、そのままでは外部からアクセスできません。「-p 8080:80」のように指定することで、「PCの8080番ポートへのアクセスを、コンテナ内の80番に転送する」設定ができます。Jupyter Notebookなどをブラウザで開く際に必須です。",
-      "tags": ["docker", "networking"],
+      "tags": [
+        "docker",
+        "networking"
+      ],
       "aiEraRelevance": true
     }
   ]

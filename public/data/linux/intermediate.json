@@ -1,52 +1,114 @@
 {
-  "categoryId": "linux",
-  "difficulty": "intermediate",
-  "version": "1.0.0",
   "questions": [
     {
       "id": "linux_intermediate_001",
-      "question": "「Permission denied（許可がありません）」というエラーが出た時、管理者権限で実行するために先頭につけるコマンドは？",
-      "choices": ["admin", "root", "sudo", "please"],
-      "correctAnswer": 2,
-      "explanation": "「sudo」は一時的に管理者（root）としてコマンドを実行します。ライブラリのインストールやシステム設定の変更など、AI環境構築時によく使います。強力な権限なので慎重に扱います。",
-      "tags": ["cli", "permission"],
-      "aiEraRelevance": true
+      "question": "Webアプリを起動しようとしたら「Error: address already in use」と表示されました。ポート8000を使用している犯人プロセスを特定するコマンドは？",
+      "choices": [
+        "lsof -i :8000",
+        "ps aux | grep 8000",
+        "netstat -p 8000",
+        "kill 8000"
+      ],
+      "correctAnswer": 0,
+      "explanation": "🎯 **AI時代でこう使う**\nAIが書いたサーバーコードを再起動する際、前のプロセスが死にきれずに残っているとこのエラーが出ます。犯人を特定してキルする必須スキルです。\n\n📖 **基礎知識**\n**lsof**（List Open Files）は、開いているファイルやポートを一覧表示するコマンドです。`-i :ポート番号` で、そのポートを占有しているプロセスID（PID）をピンポイントで特定できます。\n\n💡 **実務での具体例**\n・**シーン1:** `lsof -i :8000` でPID「12345」を確認 → `kill -9 12345` で強制終了。\n・**シーン2:** 開発中にサーバーがフリーズして再起動できない時に使用。\n・**シーン3:** AIに「ポート競合してるから、プロセスを終了させるかポートを変えて」と指示。",
+      "difficulty": "intermediate",
+      "category": "process-management"
     },
     {
       "id": "linux_intermediate_002",
-      "question": "ファイルのパーミッション（実行権限など）を変更するコマンドは？",
-      "choices": ["chmod", "chown", "chgrp", "attrib"],
+      "question": "AIモデルの学習プロセスがサーバーのCPUを食いつぶしていないか確認したい。「CPU使用率が高い順」にプロセスを表示するコマンドオプションは？",
+      "choices": [
+        "ps aux --sort=-%cpu",
+        "top -o MEM",
+        "df -h",
+        "ls -cpu"
+      ],
       "correctAnswer": 0,
-      "explanation": "「chmod (change mode)」です。例えば、自分で書いたスクリプトを実行可能にするには「chmod +x script.py」とします。これを忘れて「実行できない！」と焦るミスは初心者あるあるです。",
-      "tags": ["cli", "permission", "filesystem"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\n「サーバーが重い」と感じた時、AIの学習処理が原因か、別のゾンビプロセスが暴走しているかを即座に見抜くために使います。\n\n📖 **基礎知識**\n**ps aux** は全プロセスを表示しますが、`--sort=-%cpu` をつけることでCPU使用率の降順（高い順）に並べ替えて表示できます（マイナスは降順の意味）。\n\n💡 **実務での具体例**\n・**シーン1:** サーバーが重い → コマンド実行 → PythonスクリプトがCPU 99%を使っていることを確認。\n・**シーン2:** メモリ不足なら `--sort=-%mem` でメモリ食いの犯人を捜す。\n・**シーン3:** `top` コマンドでもリアルタイム確認が可能。",
+      "difficulty": "intermediate",
+      "category": "process-management"
     },
     {
       "id": "linux_intermediate_003",
-      "question": "大量のログファイルから、「Error」という文字が含まれる行だけを抜き出すコマンドは？",
-      "choices": ["find", "search", "grep", "scan"],
+      "question": "AIアプリのログファイル `app.log` をリアルタイムで監視しつつ、「Error」という文字が含まれる行だけを表示し続けたい。正しい組み合わせは？",
+      "choices": [
+        "cat app.log | grep Error",
+        "tail -f app.log > grep Error",
+        "tail -f app.log | grep Error",
+        "watch app.log Error"
+      ],
       "correctAnswer": 2,
-      "explanation": "「grep」は文字列検索の強力なツールです。「cat log.txt | grep Error」のように使い、AI学習時の大量のログからエラー原因を特定するのに必須のスキルです。",
-      "tags": ["cli", "text-processing"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\n大量に流れるログを目視するのは不可能です。AIの推論エラーやシステム障害の瞬間だけをフィルタリングして監視する、プロの技です。\n\n📖 **基礎知識**\n**tail -f** はファイルの追記を監視し続けます。これをパイプ `|` で **grep** に渡すことで、流れてくるログの中から特定の文字列を含む行だけを画面に出力します。\n\n💡 **実務での具体例**\n・**シーン1:** `tail -f access.log | grep 500` で、500エラーが起きる瞬間だけを表示。\n・**シーン2:** `grep --line-buffered` オプションが必要な場合もある。\n・**シーン3:** AIに「エラーログだけ抽出して解析して」と依頼する前の下準備。",
+      "difficulty": "intermediate",
+      "category": "log-analysis"
     },
     {
       "id": "linux_intermediate_004",
-      "question": "ディスクの空き容量を確認するコマンドは？",
-      "choices": ["df -h", "du -s", "space", "ls -l"],
-      "correctAnswer": 0,
-      "explanation": "「df -h」でディスク使用率を確認できます。AI学習データやモデルファイルは巨大になりがちで、ディスクが一杯になると学習が途中で止まってしまうため、定期的なチェックが必要です。",
-      "tags": ["cli", "system-info"],
-      "aiEraRelevance": true
+      "question": "ディスク容量不足で「No space left on device」エラーが出ました。どのディレクトリが容量を食っているか、サイズが大きい順に特定するコマンドは？",
+      "choices": [
+        "df -h",
+        "ls -lS",
+        "cat * | wc -c",
+        "du -sh * | sort -hr"
+      ],
+      "correctAnswer": 3,
+      "explanation": "🎯 **AI時代でこう使う**\nAI開発では、巨大なデータセットや `node_modules`、Dockerイメージでディスクがすぐ埋まります。掃除すべき場所を特定するためのコマンドです。\n\n📖 **基礎知識**\n**du**（Disk Usage）はディレクトリごとの容量を表示します。`-sh`（Summary, Human-readable）で合計サイズを見やすくし、`sort -hr`（Human-numeric, Reverse）で大きい順に並べ替えます。\n\n💡 **実務での具体例**\n・**シーン1:** ルートで実行し、`var/` や `home/` など巨大な場所を特定。\n・**シーン2:** 不要なAIモデルファイル（数GB）を見つけて削除。\n・**シーン3:** `df -h` は「ディスク全体の空き」を見るコマンドなので、内訳調査には `du` を使う。",
+      "difficulty": "intermediate",
+      "category": "disk-memory"
     },
     {
       "id": "linux_intermediate_005",
-      "question": "Pythonなどのプロセスがフリーズした際、強制終了させるために使うコマンドは？",
-      "choices": ["stop", "end", "kill", "break"],
+      "question": "プロジェクト内のどこかにあるはずの「config.yaml」というファイルが見当たりません。カレントディレクトリ以下から名前で検索するコマンドは？",
+      "choices": [
+        "search . config.yaml",
+        "grep -r config.yaml .",
+        "find . -name config.yaml",
+        "locate config.yaml"
+      ],
       "correctAnswer": 2,
-      "explanation": "「kill プロセスID」で終了させます。GPUメモリを食いつぶしたまま固まった学習プロセスを掃除する際によく使います。まずは「ps」や「nvidia-smi」でIDを調べます。",
-      "tags": ["cli", "process-management"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\nAIが生成したファイルが、深い階層のどこかに埋もれてしまうことはよくあります。迷子のファイルを探し出す基本コマンドです。\n\n📖 **基礎知識**\n**find** は強力なファイル検索コマンドです。`find [検索場所] -name [ファイル名]` で、指定した名前のファイルを再帰的に探します。\n\n💡 **実務での具体例**\n・**シーン1:** `find . -name \"*.py\"` で全てのPythonファイルを探す。\n・**シーン2:** `grep` は「ファイルの中身」を探すコマンドなので、ファイル名検索には `find` を使う。\n・**シーン3:** 見つけたファイルを一括削除するなど、応用が効く。",
+      "difficulty": "intermediate",
+      "category": "file-search"
+    },
+    {
+      "id": "linux_intermediate_006",
+      "question": "大量のソースコードの中から、「API_KEY」という変数が使われている箇所（ファイル名と行）を全て洗い出したい。適切なコマンドは？",
+      "choices": [
+        "find . -name API_KEY",
+        "cat * | grep API_KEY",
+        "echo API_KEY > grep",
+        "grep -r \"API_KEY\" ."
+      ],
+      "correctAnswer": 3,
+      "explanation": "🎯 **AI時代でこう使う**\nAPIキーのハードコーディング（直書き）を見つけたり、特定の関数がどこで呼ばれているか調査したりする際に、開発者が毎日使うコマンドです。\n\n📖 **基礎知識**\n**grep -r**（Recursive）は、ディレクトリ内の全ファイルの中身を再帰的に検索します。これにより、どのファイルの何行目に検索ワードがあるかが一目瞭然です。\n\n💡 **実務での具体例**\n・**シーン1:** `grep -r \"TODO\" .` で、AIが残した修正コメントを全検索。\n・**シーン2:** `-n` オプションをつけて行番号も表示する。\n・**シーン3:** AIにコード修正を依頼する際、「この変数は3つのファイルで使われてるよ」と伝える。",
+      "difficulty": "intermediate",
+      "category": "file-search"
+    },
+    {
+      "id": "linux_intermediate_007",
+      "question": "Pythonのスクリプト実行時に「ModuleNotFoundError」が出ました。仮想環境（venv）を有効化してライブラリパスを通すためのコマンドは？",
+      "choices": [
+        "python venv/activate",
+        "source venv/bin/activate",
+        "pip install venv",
+        "./venv/run"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nAIプロジェクトごとに依存ライブラリが違うため、仮想環境の切り替えは必須です。これを忘れると「入れたはずのライブラリがない」トラブルになります。\n\n📖 **基礎知識**\n**source** コマンドは、ファイルに書かれた設定を現在のシェルに反映させます。`venv/bin/activate` を読み込むことで、Pythonの実行パスを仮想環境のものに切り替えます。\n\n💡 **実務での具体例**\n・**シーン1:** ターミナルの先頭に `(venv)` と表示されれば成功。\n・**シーン2:** 終了する時は `deactivate`。\n・**シーン3:** Windows（Git Bash）とLinux/Macでパスが少し違うので注意。",
+      "difficulty": "intermediate",
+      "category": "package-management"
+    },
+    {
+      "id": "linux_intermediate_008",
+      "question": "現在インストールされているPythonパッケージの一覧とバージョン情報を、他の開発者が再現できるようにファイル（requirements.txt）に書き出したい。使うコマンドは？",
+      "choices": [
+        "pip list > requirements.txt",
+        "pip freeze > requirements.txt",
+        "pip save requirements.txt",
+        "python --export requirements.txt"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\n「私の環境では動くのに」を防ぐため、AIアプリを別環境（クラウドや他のPC）にデプロイする際に必ず行う手順です。\n\n📖 **基礎知識**\n**pip freeze** は、インストール済みパッケージを `numpy==1.21.0` のような形式で出力します。これをリダイレクト `>` でファイルに保存することで、環境を固定"
     }
   ]
 }

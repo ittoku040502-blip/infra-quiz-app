@@ -6,46 +6,85 @@
     {
       "id": "container_advanced_001",
       "question": "Dockerfileで、ベースとなるImage（OSやPythonのバージョン）を指定する最初の命令は？",
-      "choices": ["FROM", "IMPORT", "BASE", "START"],
+      "choices": [
+        "FROM",
+        "IMPORT",
+        "BASE",
+        "START"
+      ],
       "correctAnswer": 0,
       "explanation": "全てのDockerfileは `FROM` から始まります。「ゼロから作る」のではなく、「誰かが作った土台（Base Image）」の上に自分の必要なものを追加していくのがDocker流です。",
-      "tags": ["dockerfile"],
+      "tags": [
+        "dockerfile"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_advanced_002",
       "question": "コンテナオーケストレーションツール「Kubernetes」において、コンテナを管理する最小単位は？",
-      "choices": ["Pod (ポッド)", "Node (ノード)", "Cluster (クラスター)", "Service (サービス)"],
-      "correctAnswer": 0,
+      "choices": [
+        "Node (ノード)",
+        "Pod (ポッド)",
+        "Cluster (クラスター)",
+        "Service (サービス)"
+      ],
+      "correctAnswer": 1,
       "explanation": "Kubernetes（K8s）では、コンテナ単体ではなく「Pod」という単位で管理します。1つのPodの中に、メインのAIコンテナと、補助用のコンテナが同居することもあります。K8sは「大量のコンテナを自動運転するシステム」です。",
-      "tags": ["kubernetes", "orchestration"],
+      "tags": [
+        "kubernetes",
+        "orchestration"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_advanced_003",
       "question": "開発環境と本番環境で同じImageを使うことの最大のメリットは？",
-      "choices": ["環境差異によるバグ（Works on My Machine）が無くなる", "処理速度が2倍になる", "ライセンス料が安くなる", "インターネットが不要になる"],
-      "correctAnswer": 0,
+      "choices": [
+        "処理速度が2倍になる",
+        "環境差異によるバグ（Works on My Machine）が無くなる",
+        "ライセンス料が安くなる",
+        "インターネットが不要になる"
+      ],
+      "correctAnswer": 1,
       "explanation": "「自分のPCでは動いたのに、サーバーに置いたら動かない！」というあるあるトラブルを防げます。Imageという「カプセル」ごとコピーして持っていくので、中身の環境はどこでも完全に一致します。",
-      "tags": ["docker", "devops"],
+      "tags": [
+        "docker",
+        "devops"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_advanced_004",
       "question": "Dockerイメージのサイズを小さくするために推奨される方法は？",
-      "choices": ["軽量なベースイメージ（AlpineやSlim）を使う", "全てのファイルをtarで圧縮する", "不要なファイルを消さない", "画質を落とす"],
-      "correctAnswer": 0,
+      "choices": [
+        "全てのファイルをtarで圧縮する",
+        "不要なファイルを消さない",
+        "軽量なベースイメージ（AlpineやSlim）を使う",
+        "画質を落とす"
+      ],
+      "correctAnswer": 2,
       "explanation": "「python:3.9-slim」のような軽量版ベースイメージを使うと、無駄なツールが入っていないためサイズが劇的に小さくなります。Imageが軽いと、ダウンロードや起動が速くなり、AI開発のサイクルが早まります。",
-      "tags": ["dockerfile", "optimization"],
+      "tags": [
+        "dockerfile",
+        "optimization"
+      ],
       "aiEraRelevance": true
     },
     {
       "id": "container_advanced_005",
       "question": "コンテナが停止しても自動的に再起動するようにする設定は？",
-      "choices": ["--restart always", "--keep-alive", "--auto-boot", "--loop"],
-      "correctAnswer": 0,
+      "choices": [
+        "--keep-alive",
+        "--auto-boot",
+        "--loop",
+        "--restart always"
+      ],
+      "correctAnswer": 3,
       "explanation": "学習中にエラーで落ちたり、PCを再起動した際に、コンテナも自動で復活させる設定です。常時稼働させておきたいAIチャットボットなどの運用で役立ちます。",
-      "tags": ["docker", "operations"],
+      "tags": [
+        "docker",
+        "operations"
+      ],
       "aiEraRelevance": true
     }
   ]

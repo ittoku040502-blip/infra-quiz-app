@@ -227,7 +227,7 @@ const Quiz = () => {
                 <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${labelClass}`}>
                   {optionLabel}
                 </span>
-                <span className={`flex-1 text-base font-medium ${
+                <span translate="no" className={`flex-1 text-base font-medium ${
                   showExplanation
                     ? isCorrectOption
                       ? 'text-emerald-700'

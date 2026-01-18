@@ -1,52 +1,144 @@
 {
-  "categoryId": "linux",
-  "difficulty": "advanced",
-  "version": "1.0.0",
   "questions": [
     {
       "id": "linux_advanced_001",
-      "question": "GPUの使用状況（メモリ残量や温度）を確認するためのNVIDIA公式コマンドは？",
-      "choices": ["gpu-status", "nvidia-smi", "cuda-check", "top"],
+      "question": "AIモデルの推論サーバーの動作が極端に遅くなりました。CPU使用率は低いのに「Load Average」が高い場合、原因調査のために実行すべきコマンドは？",
+      "choices": [
+        "free -h",
+        "iostat -xz 1",
+        "df -h",
+        "cat /etc/hosts"
+      ],
       "correctAnswer": 1,
-      "explanation": "「nvidia-smi」はAI開発者の相棒です。「学習が遅いな？」と思ったらこれを見て、GPUがちゃんと動いているか、メモリ不足になっていないかを確認します。",
-      "tags": ["gpu", "system-info"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\n「CPUは暇なのにサーバーが重い」現象は、AI学習時のデータ読み込み待ち（ディスクI/Oボトルネック）で頻発します。\n\n📖 **基礎知識**\n**Load Average**が高いのにCPU使用率が低い場合、ディスクへの読み書き待ち（I/O Wait）が原因であることが多いです。**iostat**コマンドを使うと、ディスクごとの負荷状況を確認できます。\n\n💡 **実務での具体例**\n・**シーン1:** `iostat -xz 1`を実行し、`%iowait`や`%util`が高いディスクを特定。\n・**シーン2:** データの読み込みが遅いので、HDDからSSDへの移行や、データのメモリキャッシュを検討。\n・**シーン3:** クラウドならIOPS（秒間アクセス数）の上限に達していないか確認。",
+      "difficulty": "advanced",
+      "category": "performance-troubleshooting"
     },
     {
       "id": "linux_advanced_002",
-      "question": "SSH接続を切断しても、サーバー上でプログラム（学習処理）を動かし続けるために使うツールは？",
-      "choices": ["tmux / screen", "vim", "bash", "ssh -k"],
-      "correctAnswer": 0,
-      "explanation": "「tmux」や「screen」を使えば、ターミナルのセッションを保存できます。数日かかるAIの学習中、ずっとPCを開いておく必要がなくなり、誤って接続が切れても処理が止まりません。",
-      "tags": ["cli", "ssh", "process-management"],
-      "aiEraRelevance": true
+      "question": "PythonのAIアプリが「MemoryError」で落ちました。現在のメモリ使用状況（物理メモリとスワップ）を見やすく確認するコマンドは？",
+      "choices": [
+        "df -h",
+        "du -sh",
+        "free -h",
+        "meminfo"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\n巨大な行列演算を行うAIプログラムは、簡単にメモリを食いつぶします。OOM Killer（強制終了）の予兆を検知するために必須です。\n\n📖 **基礎知識**\n**free**コマンドはメモリの空き容量を表示します。`-h`オプションでGB/MB単位で表示されます。**Swap**（スワップ）が使われ始めると処理速度が激減するため、物理メモリ（Mem）の空き状況監視が重要です。\n\n💡 **実務での具体例**\n・**シーン1:** `free -h`を実行し、`available`の列が極端に少ないことを確認。\n・**シーン2:** メモリ不足と判断し、インスタンスサイズを上げるか、バッチサイズを減らすようAIコードを修正。\n・**シーン3:** `dmesg | grep -i oom`で、過去にメモリ不足でキルされた形跡がないか調べる。",
+      "difficulty": "advanced",
+      "category": "performance-troubleshooting"
     },
     {
       "id": "linux_advanced_003",
-      "question": "APIキーやパスワードをコードに直接書かず、OSに保存して読み込ませる仕組みは？",
-      "choices": ["環境変数 (Environment Variable)", "グローバル変数", "定数ファイル", "ルートディレクトリ"],
+      "question": "本番サーバーのディスク容量が100%になり、AIログが書き込めなくなりました。原因は過去のログが蓄積されすぎたことです。これを自動的に防ぐための仕組みは？",
+      "choices": [
+        "logrotate",
+        "cron",
+        "syslog",
+        "journalctl"
+      ],
       "correctAnswer": 0,
-      "explanation": "「export OPENAI_API_KEY=sk-...」のように設定し、プログラムからは `os.environ` で読み込みます。コードをGitHubにアップしてもパスワードが漏れないための基本セキュリティです。",
-      "tags": ["security", "environment"],
-      "aiEraRelevance": true
+      "explanation": "🎯 **AI時代でこう使う**\nAIは大量のログを吐き出します。放置すると数日でディスクが埋まり、サーバーが停止する事故（ディスクフル）に繋がります。\n\n📖 **基礎知識**\n**logrotate**（ログローテーション）は、ログファイルを日次や週次で新しいファイルに切り替え、古いものを圧縮・削除する仕組みです。`/etc/logrotate.conf`などで設定します。\n\n💡 **実務での具体例**\n・**シーン1:** `df -h`でディスクフルを確認後、巨大なログファイルを発見。\n・**シーン2:** `/etc/logrotate.d/myapp`を作成し、`daily`, `compress`, `rotate 7`（7世代保存）などを設定。\n・**シーン3:** 即座に空きを作るため、`> large_file.log`でファイルの中身だけ空にする。",
+      "difficulty": "advanced",
+      "category": "log-management"
     },
     {
       "id": "linux_advanced_004",
-      "question": "SSHでサーバーに接続する際、パスワードよりも安全とされる認証方式は？",
-      "choices": ["公開鍵認証", "生体認証", "ワンタイムパスワード", "IPアドレス制限"],
-      "correctAnswer": 0,
-      "explanation": "「公開鍵（鍵穴）」をサーバーに置き、「秘密鍵（鍵）」を自分が持つ方式です。クラウド上のGPUサーバーなどは、セキュリティのためパスワードログインを禁止し、この方式のみ許可するのが一般的です。",
-      "tags": ["security", "ssh"],
-      "aiEraRelevance": true
+      "question": "SSHで本番サーバーに接続する際、セキュリティを高めるために「パスワード認証を無効化」したい。編集すべき設定ファイルは？",
+      "choices": [
+        "~/.ssh/config",
+        "/etc/ssh/sshd_config",
+        "/etc/passwd",
+        "/etc/shadow"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\nGPUサーバーは世界中から攻撃の的になります。パスワード総当たり攻撃（ブルートフォース）を防ぐため、公開鍵認証のみにするのが常識です。\n\n📖 **基礎知識**\nSSHサーバーの設定は **/etc/ssh/sshd_config** にあります。ここで `PasswordAuthentication no` に設定し、SSHサービスを再起動することで、鍵を持たないユーザーの接続を拒否できます。\n\n💡 **実務での具体例**\n・**シーン1:** 設定ファイルを編集後、`sudo systemctl restart sshd` で反映。\n・**シーン2:** 編集前に別のターミナルを開いておき、締め出し（ログイン不能）事故を防ぐ。\n・**シーン3:** AI開発用の踏み台サーバーなどで必須の設定。",
+      "difficulty": "advanced",
+      "category": "security"
     },
     {
       "id": "linux_advanced_005",
-      "question": "Pythonのライブラリ環境をプロジェクトごとに分離する仕組みは？",
-      "choices": ["Virtual Environment (venv)", "Docker", "Anaconda", "全て正解"],
-      "correctAnswer": 3,
-      "explanation": "venv, Docker, Anacondaはいずれも環境分離に使われます。プロジェクトAではPyTorch 1.0、Bでは2.0を使いたい場合など、これらを使って混ぜないようにするのが「環境構築」の第一歩です。",
-      "tags": ["environment", "python"],
-      "aiEraRelevance": true
+      "question": "SSHの秘密鍵（id_rsa）を使おうとしたら「Permissions 0644 for 'id_rsa' are too open」と怒られました。適切な権限に変更するコマンドは？",
+      "choices": [
+        "chmod 777 id_rsa",
+        "chmod 755 id_rsa",
+        "chmod 600 id_rsa",
+        "chown root id_rsa"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nGit経由で鍵を共有したり、AIに鍵生成させたりした時によく遭遇します。鍵の管理不備はセキュリティリスク直結のため、システムが警告してくれます。\n\n📖 **基礎知識**\nSSH秘密鍵は「所有者だけが読み書きできる」状態でないと使用できません。**600**（所有者: 読書OK、他: アクセス不可）に設定する必要があります。\n\n💡 **実務での具体例**\n・**シーン1:** エラーが出たら即座に `chmod 600 ~/.ssh/id_rsa` を実行。\n・**シーン2:** 公開鍵（.pub）の方は `644`（他人も読める）でOK。\n・**シーン3:** AIに「秘密鍵の権限設定コマンドも含めて手順書を書いて」と指示。",
+      "difficulty": "advanced",
+      "category": "security"
+    },
+    {
+      "id": "linux_advanced_006",
+      "question": "大量のアクセスログ（access.log）から、ステータスコードが「500」の行の「IPアドレス」部分だけを抽出して集計したい。適したコマンドは？",
+      "choices": [
+        "tail -f access.log",
+        "awk '$9 == 500 {print $1}' access.log",
+        "cat access.log | grep 500",
+        "sed 's/500/error/g' access.log"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\n障害時、「どのIPから攻撃が来ているか？」「どのAPIが死んでいるか？」を数GBのログから数秒で分析するために使います。\n\n📖 **基礎知識**\n**awk**はテキスト処理に特化した強力なコマンドです。スペース区切りのログファイルから「N列目のデータ」を抜き出すのに最適です。`grep`は行抽出はできますが、特定列の抜き出しは苦手です。\n\n💡 **実務での具体例**\n・**シーン1:** `awk '{print $1}' | sort | uniq -c` でアクセス元のIPランキングを作る。\n・**シーン2:** AIに「このログ形式に合わせてawkコマンドを作って」と依頼する。\n・**シーン3:** 異常なIPを特定し、ファイアウォールでブロックする。",
+      "difficulty": "advanced",
+      "category": "log-management"
+    },
+    {
+      "id": "linux_advanced_007",
+      "question": "AIモデルの再学習処理を、毎日深夜3時に自動実行させたい。設定に使うコマンドは？",
+      "choices": [
+        "crontab -e",
+        "at 03:00",
+        "sleep 1d",
+        "systemctl start daily"
+      ],
+      "correctAnswer": 0,
+      "explanation": "🎯 **AI時代でこう使う**\n「新しいデータでモデルを更新する」などの定常タスクを自動化します。サーバー運用において、人間が夜中に起きなくて済むようにする基本技術です。\n\n📖 **基礎知識**\n**cron**（クーロン）は定期実行ジョブです。`crontab -e` コマンドで設定ファイルを開き、`0 3 * * * /path/to/script.sh` のように記述します（分 時 日 月 曜日）。\n\n💡 **実務での具体例**\n・**シーン1:** `crontab -l` で現在設定されているスケジュールを確認。\n・**シーン2:** スクリプト内で環境変数が読み込まれないトラブル防止のため、絶対パスで書く。\n・**シーン3:** 実行結果をログに残すため `>> /var/log/cron.log 2>&1` を末尾につける。",
+      "difficulty": "advanced",
+      "category": "automation"
+    },
+    {
+      "id": "linux_advanced_008",
+      "question": "シェルスクリプトで、前のコマンド（例：ビルド処理）が成功したか失敗したかによって処理を分岐させたい。直前のコマンドの「終了ステータス」が入っている変数は？",
+      "choices": [
+        "$STATUS",
+        "$#",
+        "$?",
+        "$!"
+      ],
+      "correctAnswer": 2,
+      "explanation": "🎯 **AI時代でこう使う**\nデプロイスクリプトなどで「テストが失敗したらデプロイを中止する」という安全装置を作るために必須の知識です。\n\n📖 **基礎知識**\n特殊変数 **$?** には、直前に実行したコマンドの終了ステータスが格納されます。成功なら `0`、エラーなら `0以外`（1など）が入ります。\n\n💡 **実務での具体例**\n・**シーン1:** `if [ $? -ne 0 ]; then echo \"Error!\"; exit 1; fi` でエラーハンドリング。\n・**シーン2:** スクリプトの冒頭に `set -e` を書き、エラー時に即停止させる設定もよく使う。\n・**シーン3:** AIに「エラー時にSlack通知を送る処理を追加して」と指示。",
+      "difficulty": "advanced",
+      "category": "automation"
+    },
+    {
+      "id": "linux_advanced_009",
+      "question": "SSH接続を切断した後も、時間のかかるAI学習スクリプトをバックグラウンドで動かし続けたい。適切なコマンド実行方法は？",
+      "choices": [
+        "python train.py &",
+        "nohup python train.py &",
+        "ctrl + z",
+        "bg python train.py"
+      ],
+      "correctAnswer": 1,
+      "explanation": "🎯 **AI時代でこう使う**\n学習に数時間かかる場合、PCを閉じてもサーバー上で処理を続けさせる必要があります。単なる `&` だけだとSSH切断時に道連れで終了してしまいます。\n\n📖 **基礎知識**\n**nohup**（No Hang Up）コマンドは、ログアウト時の終了シグナル（SIGHUP）を無視してプロセスを継続させます。末尾に `&` をつけてバックグラウンド実行にするのが定石です。\n\n💡 **実務での具体例**\n・**シーン1:** `nohup python train.py > output.log 2>&1 &` でログを保存しつつ実行。\n・**シーン2:** 翌朝 `tail -f output.log` で結果を確認。\n・**シーン3:** より高度な管理が必要な場合は `tmux` や `systemd` を使う。",
+      "difficulty": "advanced",
+      "category": "resource-management"
+    },
+    {
+      "id": "linux_advanced_010",
+      "question": "サーバー全体のCPU負荷（Load Average）を確認したい。「直近1分、5分、15分」の平均負荷を表示するコマンドは？",
+      "choices": [
+        "uptime",
+        "cpuinfo",
+        "ps aux",
+        "whoami"
+      ],
+      "correctAnswer": 0,
+      "explanation": "🎯 **AI時代でこう使う**\n「今重いだけなのか、15分前からずっと重いのか」を判断し、障害の深刻度を見極めるために使います。\n\n📖 **基礎知識**\n**uptime**コマンドは、サーバーの稼働時間とロードアベレージを表示します。ロードアベレージが「CPUコア数」を超えている場合、処理待ちが発生している（詰まっている）状態です。\n\n💡 **実務での具体例**\n・**シーン1:** 障害報告時、「Load Avgが10.5（4コアCPU）なので完全にパンクしています」と報告。\n・**シーン2:** `w` コマンドや `top` コマンドでも同じ情報が見られる。\n・**シーン3:** 一時的なスパイクなら無視、長時間高いならスケールアップを判断。",
+      "difficulty": "advanced",
+      "category": "performance-troubleshooting"
     }
   ]
 }
