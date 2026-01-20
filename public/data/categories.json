@@ -8,8 +8,8 @@
       "description": "TCP/IP、DNS、HTTPなどネットワークの基礎知識",
       "icon": "🌐",
       "enabled": true,
-      "difficulties": ["basic", "intermediate", "advanced"],
-      "totalQuestions": 50,
+      "difficulties": ["intro", "basic", "intermediate", "advanced"],
+      "totalQuestions": 60,
       "aiEraFocus": true
     },
     {
@@ -18,8 +18,8 @@
       "description": "Linuxコマンド、シェルスクリプト、システム管理",
       "icon": "🐧",
       "enabled": true,
-      "difficulties": ["basic", "intermediate", "advanced"],
-      "totalQuestions": 15,
+      "difficulties": ["intro", "basic", "intermediate", "advanced"],
+      "totalQuestions": 25,
       "aiEraFocus": true
     },
     {
@@ -28,8 +28,8 @@
       "description": "クラウドサービスの基本概念と実践",
       "icon": "☁️",
       "enabled": true,
-      "difficulties": ["basic", "intermediate", "advanced"],
-      "totalQuestions": 15,
+      "difficulties": ["intro", "basic", "intermediate", "advanced"],
+      "totalQuestions": 25,
       "aiEraFocus": true
     },
     {

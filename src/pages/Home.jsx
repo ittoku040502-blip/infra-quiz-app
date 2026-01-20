@@ -35,6 +35,7 @@ const Home = () => {
   const questionOptions = [5, 10, 15, 20];
 
   const difficultyOptions = [
+    { id: 'intro', label: '超基礎', icon: '🌟' },
     { id: 'basic', label: '基礎', icon: '🌱' },
     { id: 'intermediate', label: '中級', icon: '🚀' },
     { id: 'advanced', label: '上級', icon: '⚡' },
@@ -116,7 +117,7 @@ const Home = () => {
                   難易度を選択
                 </span>
               </label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-4 gap-3">
                 {difficultyOptions.map((opt) => (
                   <button
                     key={opt.id}

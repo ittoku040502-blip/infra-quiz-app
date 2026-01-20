@@ -6,6 +6,13 @@
   "lastUpdated": "2026-01-18",
   "difficulties": [
     {
+      "level": "intro",
+      "name": "超基礎",
+      "description": "クラウドの超基礎概念",
+      "questionCount": 10,
+      "file": "intro.json"
+    },
+    {
       "level": "basic",
       "name": "基礎",
       "description": "クラウドの基本的なサービス形態と用語",

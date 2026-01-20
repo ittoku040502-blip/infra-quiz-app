@@ -6,6 +6,13 @@
   "lastUpdated": "2026-01-17",
   "difficulties": [
     {
+      "level": "intro",
+      "name": "超基礎",
+      "description": "ネットワークの超基礎概念",
+      "questionCount": 10,
+      "file": "intro.json"
+    },
+    {
       "level": "basic",
       "name": "基礎",
       "description": "ネットワークの基本概念",
